@@ -50,7 +50,7 @@ void loop()
         //Serial.println(" *F");
         //Serial.print(" ");
         //Serial.println(wait);
-        delay(wait);         // Wait 15 seconds
+        delay(wait);         // Wait
     
     }
 
