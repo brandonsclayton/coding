@@ -17,7 +17,7 @@
 
 DHT dht(DHTPIN, DHTTYPE);
 
-long int wait = 20*60*1000;      // Wait time in mintues per temp reading
+long wait = 15*60*1000L;      // Wait time in mintues per temp reading
 
 
 void setup()
@@ -48,8 +48,9 @@ void loop()
         //Serial.print("Temperature: ");
         Serial.println(temp);
         //Serial.println(" *F");
-        Serial.println(wait);
-        delay(int(wait));         // Wait 15 seconds
+        //Serial.print(" ");
+        //Serial.println(wait);
+        delay(wait);         // Wait 15 seconds
     
     }
 
