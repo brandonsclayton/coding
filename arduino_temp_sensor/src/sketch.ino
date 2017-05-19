@@ -17,7 +17,7 @@
 
 DHT dht(DHTPIN, DHTTYPE);
 
-long wait = 15*60*1000L;      // Wait time in mintues per temp reading
+long wait = 60*1000L;      // Wait time in seconds per temp reading
 
 
 void setup()
