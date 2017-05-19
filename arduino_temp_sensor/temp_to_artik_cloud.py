@@ -21,6 +21,8 @@ from pprint import pprint
 import serial
 import os
 from time import sleep
+import urllib3
+urllib3.disable_warnings()
 
 os.system('clear')
 #------------------------ End Import --------------------------------------
@@ -32,7 +34,7 @@ os.system('clear')
 ###########################################################################
 #
 #................... Variables ............................................
-arduino='/dev/ttyACM2'                              # Arduino device for serial communication
+arduino='/dev/ttyACM0'                              # Arduino device for serial communication
 
 device_id = '1497d25089db4a8d84997fd5b2a3d65f'      # Arduino device ID for Artik cloud
 device_token = '17d85311bc7f46519a75a5138c46f221'   # Arduino device token for Artik cloud
@@ -62,7 +64,7 @@ api_instance = artikcloud.MessagesApi()                     # Get messaging API
 ###########################################################################
 
 
-
+print '\n\n Connecting \n\n'
 
 while(True):
 
