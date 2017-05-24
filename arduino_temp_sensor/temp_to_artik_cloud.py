@@ -101,6 +101,10 @@ while(True):
     print data
     print "\n\n"
 
+    print '\n Sending message at: '
+    os.system('echo $(date)')
+    print '\n\n\n'
+
     #--------------- End Make Message to Send --------------------------------
     #
     ###########################################################################
