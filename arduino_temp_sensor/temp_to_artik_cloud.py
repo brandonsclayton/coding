@@ -34,7 +34,7 @@ os.system('clear')
 ###########################################################################
 #
 #................... Variables ............................................
-arduino='/dev/ttyACM0'                              # Arduino device for serial communication
+arduino='/dev/ttyACM1'                              # Arduino device for serial communication
 
 device_id = '1497d25089db4a8d84997fd5b2a3d65f'      # Arduino device ID for Artik cloud
 device_token = '17d85311bc7f46519a75a5138c46f221'   # Arduino device token for Artik cloud
