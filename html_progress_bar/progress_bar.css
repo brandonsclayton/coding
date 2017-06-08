@@ -1,6 +1,6 @@
 .bar-step {
     position:absolute;
-    margin-top:-20px;
+    margin-top:-15px;
 	z-index:-1;
 }
 
@@ -8,11 +8,15 @@
 .label-line {
     float: right;
     background: #000;
-    height:55px;
+    height:60px;
 	width:5px;
     z-index: -1;
 }
 
+h1
+{
+text-align: center;
+}
 
 h2
 {
@@ -20,4 +24,9 @@ text-align: center;
 padding-bottom: 20px;
 }
 
-
+#bar
+{
+	font-size:20px;
+	vertical-align:text-top;
+	padding-top: 5px;
+}
