@@ -1,0 +1,24 @@
+.bar-step {
+    position:absolute;
+    margin-top:-20px;
+	z-index:-1;
+    font-size:12px;
+}
+
+
+.label-line {
+    float: right;
+    background: #000;
+    height:55px;
+	width:5px;
+    z-index: -1;
+}
+
+
+h2
+{
+text-align: center;
+padding-bottom: 20px;
+}
+
+
