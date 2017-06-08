@@ -9,29 +9,36 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="progress_bar.css">
-<link rel="stylesheet" href="css/circle.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
 
-<div class="container" style="width:50%">
-    <div class="col-md-10">
+<div class="container" >
+    <div class="row"><br><div class="col-md-10" style="padding:0px;">
         <h2 >Temperature</h2>
+        <h2 id="temp"></h2>
         <div class="progress" style="z-index: 1">
-            <div class="progress-bar" role="progressbar" style="width:70.0%">
+            <div class="progress-bar progress-bar-danger" style="width: 12.5%">
+            Cats May Die
+            </div>
+            <div class="progress-bar" style="width: 25.0%">
             Cold
             </div>
-            <div class="progress-bar progress-bar-success" role="progressbar" style="width:10%">
+            <div class="progress-bar progress-bar-success" style="width: 25.0%">
             Perfect
             </div>
-            <div class="progress-bar progress-bar-danger" role="progressbar" style="width:20%">
+            <div class="progress-bar progress-bar-warning" style="width: 25.0%">
             Hot
             </div>
+            <div class="progress-bar progress-bar-danger" style="width: 12.5%">
+            Cats May Die
+            </div>
   		    <div class="bar-step" id="style" >
-       		    <div class="label-line"></div>
+       		    <div class="label-line" ></div>
        	    </div>
         </div>
-    </div>
+    </div></div>
 </div>
 
 
@@ -39,9 +46,50 @@
 
 
 
+
 <script>
-var temp= 70.0
-document.getElementById("style").style = "left: " + temp + "%";
+var temp= 72.5
+
+var per = 0.25
+var scale = per*100.
+var per_danger = .0125
+var scale_danger = 12.5
+
+var frz_min = 30.0
+var frz_max = 59.9
+var cold_min = 60.0
+var cold_max = 69.9
+var perf_min = 70.0
+var perf_max = 79.9
+var hot_min = 80.0
+var hot_max = 84.9
+var blstr_min=85.0
+var blstr_max=100.0
+
+
+if (temp >=frz_min && temp < cold_min)
+{
+    var temp_scale = (temp-frz_min)/(frz_max-frz_min)*scale_danger
+}
+else if (temp >= cold_min && temp < perf_min)
+{
+    var temp_scale = scale_danger + (temp-cold_min)/(cold_max-cold_min)*scale
+}
+
+else if (temp >= perf_min && temp < hot_min)
+{
+    var temp_scale = scale + scale_danger + (temp-perf_min)/(perf_max-perf_min)*scale
+}
+else if (temp >= hot_min && temp < blstr_min)
+{
+    var temp_scale = scale*2. + scale_danger + (temp-hot_min)/(hot_max-hot_min)*scale
+}
+else if (temp >= blstr_min && temp <= blstr_max)
+{
+    var temp_scale = scale*3 + scale_danger + (temp-blstr_min)/(blstr_max-blstr_min)*scale_danger
+}
+document.getElementById("temp").innerHTML= temp;
+document.getElementById("style").style = "left: " + temp_scale +"%";
 </script>
 
 </body>
