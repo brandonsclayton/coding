@@ -30,8 +30,8 @@
             </div>
             <div class="mdl-card__actions mdl-card--border"></div>
             <div class="mdl-card__supporting-text">
-                <h1 style="font-size:100px;" id="temp">     <!-- Add Temperature from Javascript -->
-            </h1></div>
+                <h1 style="font-size:100px;" id="temp"> </h1>     <!-- Add Temperature from Javascript -->
+            </div>
         
             <div class="progress" style="z-index: 1;height:30px;">
                 <div class="progress-bar progress-bar-danger" id="bar" style="width: 12.5%">Ahh</div>
@@ -43,8 +43,9 @@
        		        <div class="label-line" ></div>
        	        </div>
             </div>
+            
             <div class="mdl-card__actions mdl-card--border"></div>
-        </div>
+		</div>
 </div>
 <!-- .................... End Living Room Temperature ................. -->
 
@@ -92,7 +93,7 @@ else if (temp >= blstr_min && temp <= blstr_max)
 {
     var temp_scale = scale*3 + scale_danger + (temp-blstr_min)/(blstr_max-blstr_min)*scale_danger
 }
-document.getElementById("temp").innerHTML= temp;
+document.getElementById("temp").innerHTML= temp + " \u2109"; 
 document.getElementById("style").style = "left: " + temp_scale +"%";
 </script>
 
