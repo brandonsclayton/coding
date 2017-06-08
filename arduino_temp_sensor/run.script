@@ -1,9 +1,9 @@
 #!/bin/bash
 
+log="upload/upload.log"
 jr=-1
 while true;do
     ((jr++))
-    tag=$(printf "%03d" $jr)
-    log="upload/upload"$tag".log"
     python temp_to_artik_cloud.py > $log
+    wait
 done
