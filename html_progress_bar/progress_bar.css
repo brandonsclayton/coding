@@ -7,10 +7,10 @@
 
 .label-line {
     float: right;
-    background: #000;
     height:60px;
 	width:5px;
     z-index: -1;
+    background: grey;
 }
 
 h1
@@ -30,3 +30,4 @@ padding-bottom: 20px;
 	vertical-align:text-top;
 	padding-top: 5px;
 }
+
