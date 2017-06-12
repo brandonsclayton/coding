@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Lights Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-red.min.css">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <script src="//storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://bclayton.herokuapp.com/css/common.css">
+    <link rel="stylesheet" type="text/css" href="lights.css">
+
+</head>
+
+
+<body>
+    
+
+    <div class="mdl-grid" style="padding-top:50px">
+
+	    <div class="mdl-card mdl-shadow--8dp">
+            <h1> Dining Room </h1> 
+            <div class="mdl-card__actions mdl-card--border"></div>
+            <div class="mdl-card__supporting-text" id="mdl-card_text">
+                <center><img id="light_bulb"  width="250px" height="250px" style="display:block;padding-bottom:10px;"></center>
+                <div class="cont"> 
+                    <div class="on_off">
+                        <button onclick="light_stat(1)" class="mdl-button mdl-js-button mdl-button--raised">
+                            Light ON
+                        </button> 
+                    </div>
+                    <div class="on_off">
+                       <button onclick="light_stat(0)" class="mdl-button mdl-js-button mdl-button--raised">
+                            Light OFF
+                        </button>
+                    </div>
+                </div>
+            </div> <!-- End Supporting Text -->
+            <div class="mdl-card__actions mdl-card--border"></div>
+	    </div> <!-- End mdl-card -->
+
+    </div> <!-- End mdl-grid -->
+
+</body>
+
+
+<script>
+    
+    var stat = Math.floor(Math.random()*2);
+    light_stat(stat);
+    function light_stat(stat)
+    {
+            
+        var image = document.getElementById('light_bulb');
+        var light = document.getElementById('light')
+        if (stat==0) 
+        {
+            image.src = "light_off.png";
+        } 
+        else if (stat==1) 
+        {
+            image.src = "light_on.png";
+        }      
+
+    }
+
+
+</script>
+
+
+</html>

@@ -1,0 +1,35 @@
+
+
+h1
+{
+    text-align:center;
+    margin-top:2px;
+    margin-bottom:2px;
+}
+
+
+.mdl-card
+{
+    width:500px;
+    height:400px;
+}
+
+
+#mdl-card_text
+{
+    padding:0px;
+}
+
+.cont
+{
+    display:inline-flex;
+    width:100%;
+}
+
+.on_off
+{
+    width:50%;
+    text-align:center;
+}
+
+
