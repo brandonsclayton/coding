@@ -11,7 +11,6 @@ h1
 .mdl-card
 {
     width:500px;
-    height:400px;
 }
 
 
@@ -24,6 +23,7 @@ h1
 {
     display:inline-flex;
     width:100%;
+    padding-bottom:15px;
 }
 
 .on_off
@@ -31,5 +31,4 @@ h1
     width:50%;
     text-align:center;
 }
-
 
