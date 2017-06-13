@@ -10,12 +10,20 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="progress_bar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-red.min.css">
+
     <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
     <script src="//storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://bclayton.herokuapp.com/css/common.css">
     <link rel="stylesheet" type="text/css" href="lights.css">
 
+<!--
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+-->
 </head>
 
 
@@ -26,20 +34,20 @@
 
 	    <div class="mdl-card mdl-shadow--8dp">
             <h1>
-                <i class="material-icons" id="mdl-icon_title">home</i>
+                <i class="zmdi zmdi-cutlery" id="mdl-icon_title"></i>
                 Dining Room 
-                <i class="material-icons" id="mdl-icon_title">home</i>
+                <i class="zmdi zmdi-cutlery" id="mdl-icon_title"></i>
             </h1> 
             <div class="mdl-card__actions mdl-card--border"></div>
             <div class="mdl-card__supporting-text" id="mdl-card_text">
-                <center><img id="light_bulb" onclick="light_switch()" src="light_off.png" width="250px" height="250px" style="display:block;padding-bottom:10px;"></center>
+                <div class="img-cont">
+                    <img class="top" id="light_bulb" onclick="light_switch('light')" src="Fig/light_on.png" width="200px"  >
+                    <img  class="bottom" src="Fig/light_background.png" width="200px">
+                </div>
             </div> <!-- End Supporting Text -->
             <div class="mdl-card__actions mdl-card--border"></div>
 			<div style="margin-left:20px;margin-right:20px">
-                <div class="progress" style="z-index: 1;height:30px;" id="prog_bar">
-                    <div class="progress-bar progress-bar-warning" id="bar" ><i id="test" style="font-size:18px;"></i></div>
-                </div>
-	            <input onclick="dimmer()" id="dim" class="mdl-slider mdl-js-slider" type="range"
+                 <input onclick="light_switch('dim')" id="dim" class="mdl-slider mdl-js-slider" type="range"
   				    min="10" max="100" value="80" tabindex="0">
             </div>
         
@@ -48,37 +56,61 @@
     </div> <!-- End mdl-grid -->
 
 
-
+<p id="a"></p>
 </body>
 
 
 <script>
    
     
-    
-    dimmer();
-    function dimmer()
+    dimmer('light_on');
+    function dimmer(light_stat)
     {
-        var slider = document.getElementById('dim').value;
-        document.getElementById('bar').style = "width: " + slider + "%";
-        document.getElementById('test').innerHTML = slider + "%";
-        var scale = slider/100.0
-        document.getElementById('prog_bar').style = "opacity: " + scale;
+        
+        if (light_stat == 'light_on')
+        {     
+            var slider = document.getElementById('dim').value;
+            var scale = slider/100.0
+            document.getElementById('light_bulb').style = "opacity: " + scale;
+            var style = document.createElement("STYLE");
+            var opa = document.createTextNode(".mdl-slider__background-lower { background: orange;opacity: "+ scale + ";}");
+            style.appendChild(opa);
+            document.head.appendChild(style);
+        }
+        else if (light_stat == 'light_off')
+        {
+            //document.getElementById('dim').MaterialSlider.change(0); 
+            var style = document.createElement("STYLE");
+            var opa = document.createTextNode(".mdl-slider__background-lower { background: grey ; opacity: .55 }");
+            style.appendChild(opa);
+            document.head.appendChild(style);
+
+
+        }
     }
 
 
-    function light_switch()
-    {
+    function light_switch(stat)
+    {   
         var image = document.getElementById('light_bulb');
-         
-        if (image.src.match("light_on")) 
+        var light_stat = image.src.match('light_on');
+        if (stat == 'light')
+        { 
+            if (image.src.match("light_on")) 
+            {
+                image.src = "Fig/light_off.png";
+                dimmer('light_off');
+            } 
+            else
+            {
+                image.src = "Fig/light_on.png";
+                dimmer('light_on');
+            }      
+        }
+        else if (stat == 'dim')
         {
-            image.src = "light_off.png";
-        } 
-        else
-        {
-            image.src = "light_on.png";
-        }      
+            dimmer(light_stat);
+        }
 
     }
 

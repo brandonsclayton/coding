@@ -1,4 +1,38 @@
+.img-cont
+{
+    position:relative;
+	text-align:center;
+}
 
+.img-cont .top 
+{
+  position: absolute;
+  z-index: 1;
+}
+
+.mdl-slider
+{
+    margin-top:-20px;
+}
+
+.mdl-slider__background-upper
+{
+    background:grey;
+    opacity: .55;
+}
+
+
+.mdl-slider__background-flex
+{
+    height:20px;
+    top:0px;
+}
+
+
+.mdl-slider__container
+{
+    height:40px;
+}
 
 h1
 {
