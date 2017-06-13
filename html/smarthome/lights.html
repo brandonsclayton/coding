@@ -32,15 +32,7 @@
             </h1> 
             <div class="mdl-card__actions mdl-card--border"></div>
             <div class="mdl-card__supporting-text" id="mdl-card_text">
-                <center><img id="light_bulb"  width="250px" height="250px" style="display:block;padding-bottom:10px;"></center>
-                <div style="text-align:center;padding-left:45%">
-                    <label onclick="light_switch()" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch">
-                        <input type="checkbox" id="switch" class="mdl-switch__input">
-                        <div class="mdl-switch__label">
-                            <p id="light_stat"></p>
-                        </div>
-                    </label>
-                </div>
+                <center><img id="light_bulb" onclick="light_switch()" src="light_off.png" width="250px" height="250px" style="display:block;padding-bottom:10px;"></center>
             </div> <!-- End Supporting Text -->
             <div class="mdl-card__actions mdl-card--border"></div>
 			<div style="margin-left:20px;margin-right:20px">
@@ -74,22 +66,18 @@
         document.getElementById('prog_bar').style = "opacity: " + scale;
     }
 
-    light_switch();
 
     function light_switch()
     {
-        var stat = document.getElementById('switch').checked;
         var image = document.getElementById('light_bulb');
-        var light = document.getElementById('light')
-        if (stat==false) 
+         
+        if (image.src.match("light_on")) 
         {
             image.src = "light_off.png";
-            document.getElementById('light_stat').innerHTML = "Light OFF";
         } 
-        else if (stat==true) 
+        else
         {
             image.src = "light_on.png";
-            document.getElementById('light_stat').innerHTML = "Light ON";
         }      
 
     }
