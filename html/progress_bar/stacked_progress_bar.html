@@ -30,7 +30,7 @@
             </div>
             <div class="mdl-card__actions mdl-card--border"></div>
             <div class="mdl-card__supporting-text">
-                <h1 style="font-size:100px;" id="temp"> </h1>     <!-- Add Temperature from Javascript -->
+                <h1 style="font-size:100px;" id="temp" onclick="convert_temp()" > </h1>     <!-- Add Temperature from Javascript -->
             </div>
         
             <div class="progress" style="z-index: 1;height:30px;">
@@ -48,7 +48,6 @@
 		</div>
 </div>
 <!-- .................... End Living Room Temperature ................. -->
-
 
 
 
@@ -93,8 +92,37 @@ else if (temp >= blstr_min && temp <= blstr_max)
 {
     var temp_scale = scale*3 + scale_danger + (temp-blstr_min)/(blstr_max-blstr_min)*scale_danger
 }
-document.getElementById("temp").innerHTML= temp + " \u2109"; 
+document.getElementById("temp").innerHTML= temp + "\u2109"; 
 document.getElementById("style").style = "left: " + temp_scale +"%";
+document.getElementById("temp").value = temp;
+document.getElementById("temp").title = "\u2109";
+
+
+function convert_temp()
+{
+  var temp = document.getElementById("temp").value;
+  var type = document.getElementById("temp").title; 
+  
+  if (type == "\u2109")
+  {
+    var temp_conv = (temp-32.0) * 5.0/9.0;
+    document.getElementById("temp").value = temp_conv;
+    type = "\u2103"
+    document.getElementById("temp").title = type; 
+    
+  }
+  else if (type == "\u2103")
+  {
+    var temp_conv = temp * 9.0/5.0 + 32;
+    document.getElementById("temp").value = temp_conv;
+    type = "\u2109"
+    document.getElementById("temp").title = type; 
+  }
+  document.getElementById("temp").innerHTML = temp_conv + type;
+  
+
+}
+
 </script>
 
 </body>

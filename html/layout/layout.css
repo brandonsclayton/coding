@@ -7,13 +7,20 @@ html, body
     font-family:Roboto;
 }
 
-h1
+#title
 {
+    width:33%;
     text-align:center;
     margin-top:2px;
     margin-bottom:2px;
+    font-size: 40px;
 }
 
+.title-cont
+{
+    width:100%;
+    display:inline-flex;
+}
 
 .mdl-layout__content
 {
@@ -21,10 +28,9 @@ h1
     padding:0;
 }
 
-.mdl-card
+.mdl-cell
 {
     margin: 0 auto;
-
 }
 
 #mdl-card_text
