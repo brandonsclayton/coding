@@ -14,3 +14,37 @@ function swap_style(tab)
 }
 //------------- End Set Style Sheet Function ---------------------------------- //
 
+
+
+
+
+// ....................... Change to Light/Dark Mode ...................... //
+
+function change_theme(stat)
+{
+    
+  if (stat == "start")
+  {
+    document.body.style.backgroundColor = "white";
+    document.getElementById("theme").innerHTML = "Dark Theme";
+  }
+  else
+  {
+    var theme = document.body.style.backgroundColor;
+
+    if (theme == "white")
+    {
+      document.body.style.backgroundColor = "rgba(0,0,0,.8)";
+      document.body.style.color = "white";
+      document.getElementById("theme").innerHTML = "Light Theme";
+    }
+    else
+    {
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+      
+      document.getElementById("theme").innerHTML = "Dark Theme";
+    }
+  }
+}
+//-------------- End Change to Light/Dark Mode ------------------------ //
