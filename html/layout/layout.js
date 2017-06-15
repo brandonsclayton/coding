@@ -26,35 +26,50 @@ function swap_style(tab)
 
 function change_theme(stat)
 {
-    
+  var light_bg =   "#FAFAFA";
+  var light_card = "white";
+
+  var dark_bg =    "#303030";
+  var dark_card =  "#424242";
+
   if (stat == "start")
   {
-    document.body.style.backgroundColor = "white";
+    document.body.style.backgroundColor = light_bg ;
+    document.getElementById("cell").style.backgroundColor = light_card;
+    document.getElementById("theme").style.backgroundColor = light_card;
+
     document.getElementById("theme").innerHTML = "Dark Mode";
+    document.getElementById("theme").value = "light"; 
   }
   else
   {
-    var theme = document.body.style.backgroundColor;
+    var theme = document.getElementById("theme").value;//document.body.style.backgroundColor;
 
-    if (theme == "white")
+    if (theme == "light")
     {
-      document.body.style.backgroundColor = "rgba(0,0,0,0.8)";
-      document.getElementById("theme").style.backgroundColor = "rgba(0,0,0,0.8)";
+      document.body.style.backgroundColor = dark_bg;
+      document.getElementById("theme").style.backgroundColor = dark_card;
+      document.getElementById("cell").style.backgroundColor = dark_card;
       
       document.body.style.color = "white";
-      document.getElementById("theme").style.color = "white"
+      document.getElementById("theme").style.color = "white";
       
       document.getElementById("theme").innerHTML = "Light Mode";
+      
+      document.getElementById("theme").value = "dark"; 
     }
     else
     {
-      document.body.style.backgroundColor = "white";
-      document.getElementById("theme").style.backgroundColor = "white";
+      document.body.style.backgroundColor = light_bg;
+      document.getElementById("theme").style.backgroundColor = light_card;
+      document.getElementById("cell").style.backgroundColor = light_card;
       
       document.body.style.color = "black";
       document.getElementById("theme").style.color = "black"
       
       document.getElementById("theme").innerHTML = "Dark Mode";
+      
+      document.getElementById("theme").value = "light"; 
     }
   }
 }
