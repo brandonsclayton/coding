@@ -7,7 +7,10 @@ html, body
     font-family:Roboto;
 }
 
-
+#foot
+{
+  background-color: #F44336;
+}
 
 #title
 {
@@ -49,4 +52,23 @@ html, body
     vertical-align:middle;
 }
 
+.mdl-mini-footer
+{
+  margin:0px;
+  padding:10px;
+}
 
+
+.mdl-mini-footer__left-section
+{
+  padding-left:10px;
+}
+
+
+.mdl-layout__header
+{
+  min-height:30px;
+  max-height:50px;
+  padding-top:10px;
+  margin:0;
+}

@@ -30,13 +30,14 @@
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
       
     <!-- .......................... Header ...................................... -->
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
+    <header  class="mdl-layout__header" >
+      <!-- Title
+      <div class="mdl-layout__header-row" >
         <span class="mdl-layout-title">The Clayton Smart Home</span>
       </div>
+      -->
       <!-- Tabs -->
-      <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+      <div class="mdl-layout__tab-bar mdl-js-ripple-effect"  >
         <a href="#fixed-tab-1" class="mdl-layout__tab is-active" onclick="swap_style('temp')"   >Temperature</a>
         <a href="#fixed-tab-2" class="mdl-layout__tab"           onclick="swap_style('lights')" >Lights</a>
         <a href="#fixed-tab-3" class="mdl-layout__tab"           onclick="swap_style('harmony')">Harmony</a>
@@ -123,11 +124,12 @@
     </main>
 
     <!-- .................... Footer ................ -->
-    <footer class="mdl-mini-footer">
+    <footer id="foot" class="mdl-mini-footer">
       <div class="mdl-mini-footer__left-section">
-        <div style="color:black;" class="mdl-logo"></div>
-        <button id="theme" onclick="change_theme()" class="mdl-button mdl-js-button mdl-button--raised" style="background:white">
-        </button>
+        <div style="color:black;" class="mdl-logo">
+          <button id="theme" onclick="change_theme()" class="mdl-button mdl-js-button mdl-button--raised" style="background:white">
+          </button>
+        </div>
         
       </div>
     </footer>
