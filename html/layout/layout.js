@@ -74,3 +74,26 @@ function change_theme(stat)
   }
 }
 //-------------- End Change to Light/Dark Mode ------------------------ //
+
+
+
+
+
+//........ Shadow ........
+
+function shadow(dp)
+{
+    if (dp == "start")
+    {
+      document.getElementById("cell").className += " mdl-shadow--2dp";
+    }
+    else
+   {
+      var cnames = document.getElementById("cell").className.split(' ');
+      var nc = cnames.length;
+      var 
+      //document.getElementById("cell").className[nc-1] = " mdl-shadow--" + dp + "dp";
+      document.getElementById("test").innerHTML = nc;
+   }
+}
+
