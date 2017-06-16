@@ -52,7 +52,7 @@
         <div class="page-content" >
           <!-- Temperature Content -->
           <div class="mdl-grid" style="padding-top:50px">
-        	  <div class="mdl-cell"  id="cell">
+        	  <div class="mdl-cell mdl-shadow--2dp"  id="cell">
               <div class="title-cont">
 					      <h1 id="title">
                   <i class="material-icons" id="mdl-icon_title">wb_sunny</i>
@@ -142,7 +142,7 @@ a = change_theme("start");
 
 shadow("start");
 document.getElementById("cell").onmouseover = function() {shadow(4);};
-//document.getElementById("cell").onmouseout  = function() {shadow(2);};
+document.getElementById("cell").onmouseout  = function() {shadow(2);};
 
 </script>
 

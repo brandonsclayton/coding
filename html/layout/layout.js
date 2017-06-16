@@ -85,15 +85,15 @@ function shadow(dp)
 {
     if (dp == "start")
     {
-      document.getElementById("cell").className += " mdl-shadow--2dp";
+      //document.getElementById("cell").className += " mdl-shadow--2dp";
     }
     else
    {
       var cnames = document.getElementById("cell").className.split(' ');
       var nc = cnames.length;
-      var 
+      var cnames[nc-1] = " mdl-shadow--" + dp + "dp";  
       //document.getElementById("cell").className[nc-1] = " mdl-shadow--" + dp + "dp";
-      document.getElementById("test").innerHTML = nc;
+      document.getElementById("test").innerHTML = cnames;
    }
 }
 
