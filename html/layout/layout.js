@@ -1,4 +1,7 @@
 
+
+
+
 //.................. Set Style Sheet Function .................................. //
 function swap_style(tab)
 {   
@@ -6,15 +9,15 @@ function swap_style(tab)
   var temp_foot  =   "#F44336";     // Red footer color
   var lights_style = "https://code.getmdl.io/1.3.0/material.deep_purple-light_green.min.css";
   var lights_foot =  "#8BC34A";     // Light green footer color
-  var har_style =    "https://code.getmdl.io/1.3.0/material.orange-indigo.min.css";
-  var har_foot =     "#3F51B5";     // Indigo footer color
+  var sec_style =    "https://code.getmdl.io/1.3.0/material.orange-indigo.min.css";
+  var sec_foot =     "#3F51B5";     // Indigo footer color
 
   if      (tab == 'temp')   { var sheet = temp_style;   var foot = temp_foot;}
   else if (tab == 'lights') { var sheet = lights_style; var foot = lights_foot;}
-  else if (tab == 'harmony'){ var sheet = har_style;    var foot = har_foot;}
+  else if (tab == 'sec'){ var sheet = sec_style;    var foot = sec_foot;}
   
   document.getElementById("pagestyle").setAttribute("href", sheet);
-  document.getElementById("foot").style.backgroundColor = foot;
+  document.getElementById("foot-"+tab).style.backgroundColor = foot;
 }
 //------------- End Set Style Sheet Function ---------------------------------- //
 
@@ -24,7 +27,7 @@ function swap_style(tab)
 
 // ....................... Change to Light/Dark Mode ...................... //
 
-function change_theme(stat)
+function change_theme(stat,tab)
 {
   var light_bg =   "#FAFAFA";
   var light_card = "white";
@@ -35,41 +38,41 @@ function change_theme(stat)
   if (stat == "start")
   {
     document.body.style.backgroundColor = light_bg ;
-    document.getElementById("cell").style.backgroundColor = light_card;
-    document.getElementById("theme").style.backgroundColor = light_card;
+    //document.getElementById("cell").style.backgroundColor = light_card;
+    document.getElementById("theme-"+tab).style.backgroundColor = light_card;
 
-    document.getElementById("theme").innerHTML = "Dark Mode";
-    document.getElementById("theme").value = "light"; 
+    document.getElementById("theme-"+tab).innerHTML = "Dark Mode";
+    document.getElementById("theme-"+tab).value = "light"; 
   }
   else
   {
-    var theme = document.getElementById("theme").value;//document.body.style.backgroundColor;
+    var theme = document.getElementById("theme-"+tab).value;//document.body.style.backgroundColor;
 
     if (theme == "light")
     {
       document.body.style.backgroundColor = dark_bg;
-      document.getElementById("theme").style.backgroundColor = dark_card;
-      document.getElementById("cell").style.backgroundColor = dark_card;
+      document.getElementById("theme-"+tab).style.backgroundColor = dark_card;
+      //document.getElementById("cell").style.backgroundColor = dark_card;
       
       document.body.style.color = "white";
-      document.getElementById("theme").style.color = "white";
+      document.getElementById("theme-"+tab).style.color = "white";
       
-      document.getElementById("theme").innerHTML = "Light Mode";
+      document.getElementById("theme-"+tab).innerHTML = "Light Mode";
       
-      document.getElementById("theme").value = "dark"; 
+      document.getElementById("theme-"+tab).value = "dark"; 
     }
     else
     {
       document.body.style.backgroundColor = light_bg;
-      document.getElementById("theme").style.backgroundColor = light_card;
-      document.getElementById("cell").style.backgroundColor = light_card;
+      document.getElementById("theme-"tab).style.backgroundColor = light_card;
+      //document.getElementById("cell").style.backgroundColor = light_card;
       
       document.body.style.color = "black";
-      document.getElementById("theme").style.color = "black"
+      document.getElementById("theme-"+tab).style.color = "black"
       
-      document.getElementById("theme").innerHTML = "Dark Mode";
+      document.getElementById("theme-"+tab).innerHTML = "Dark Mode";
       
-      document.getElementById("theme").value = "light"; 
+      document.getElementById("theme-"+tab).value = "light"; 
     }
   }
 }
@@ -77,23 +80,4 @@ function change_theme(stat)
 
 
 
-
-
-//........ Shadow ........
-
-function shadow(dp)
-{
-    if (dp == "start")
-    {
-      //document.getElementById("cell").className += " mdl-shadow--2dp";
-    }
-    else
-   {
-      var cnames = document.getElementById("cell").className.split(' ');
-      var nc = cnames.length;
-      var cnames[nc-1] = " mdl-shadow--" + dp + "dp";  
-      //document.getElementById("cell").className[nc-1] = " mdl-shadow--" + dp + "dp";
-      document.getElementById("test").innerHTML = cnames;
-   }
-}
 

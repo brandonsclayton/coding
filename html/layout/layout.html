@@ -18,7 +18,16 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
   <link rel="stylesheet" type="text/css" href="layout.css">
   <script src="layout.js"></script>
+  
+  
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+  <script src="swipe.js"></script>
+
 </head>
+
 <!-- ................................ HEAD .................................. -->
 
 
@@ -30,7 +39,7 @@
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
       
     <!-- .......................... Header ...................................... -->
-    <header  class="mdl-layout__header" >
+    <header  data-role="header" class="mdl-layout__header" >
       <!-- Title
       <div class="mdl-layout__header-row" >
         <span class="mdl-layout-title">The Clayton Smart Home</span>
@@ -40,7 +49,6 @@
       <div class="mdl-layout__tab-bar mdl-js-ripple-effect"  >
         <a href="#fixed-tab-1" class="mdl-layout__tab is-active" onclick="swap_style('temp')"   >Temperature</a>
         <a href="#fixed-tab-2" class="mdl-layout__tab"           onclick="swap_style('lights')" >Lights</a>
-        <a href="#fixed-tab-3" class="mdl-layout__tab"           onclick="swap_style('harmony')">Harmony</a>
       </div>
     </header>
     <!-- ....................... End Header ...................................... -->
@@ -48,7 +56,8 @@
     <main class="mdl-layout__content">
       
       <!-- .......................... Temperature Tab ............................ -->
-      <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+      <section data-role="page" id="temp"> 
+      <div class="mdl-layout__tab-panel is-active" id="fixed-tab-1">  
         <div class="page-content" >
           <!-- Temperature Content -->
           <div class="mdl-grid" style="padding-top:50px">
@@ -67,14 +76,15 @@
             </div> <!-- End mdl-cell -->
           </div> <!-- End mdl-grid -->      
           
-
 		    <!-- Temperature Content -->
+        </div>
         </div>
       </section>
       <!-- .......................End Temperature Tab ............................ -->
     
       <!-- .......................... Lights Tab ................................. -->
-      <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+      <section data-role="page" id="lights"> 
+      <div class="mdl-layout__tab-panel " id="fixed-tab-2">  
         <div class="page-content">
           <!-- Lights Content -->
           <div class="mdl-grid" style="padding-top:50px">
@@ -92,35 +102,13 @@
               </div><!-- End Title -->
             </div> <!-- End mdl-cell -->
           </div> <!-- End mdl-grid -->      
+        <p id="test"></p>
           <!-- Lights Content -->
+        </div>
         </div>
       </section>
       <!-- .......................End Lights Tab ................................. -->
     
-      <!-- .......................... Harmony Tab ................................ -->
-      <section class="mdl-layout__tab-panel" id="fixed-tab-3">
-        <div class="page-content">
-          <!-- Harmony Content -->
-          <div class="mdl-grid" style="padding-top:50px">
-            <div class="mdl-cell mdl-shadow--2dp" >
-              <div class="title-cont">
-					      <h1 id="title">
-                  <i class="material-icons" id="mdl-icon_title">tv</i>
-                </h1>
-                <h1 id="title">
-                  Harmony
-                </h1>
-                <h1 id="title">
-                  <i class="material-icons" id="mdl-icon_title">tv</i>
-                </h1>
-              </div><!-- End Title -->
-            </div> <!-- End mdl-cell -->
-          </div> <!-- End mdl-grid -->      
-          <!-- Lights Content -->
-        </div>
-      </section>
-      <!-- ....................... End Harmony Tab ................................ -->
-<p id="test"></p>    
   
     </main>
 
@@ -138,12 +126,7 @@
   </div><!-- End mdl-layout -->
 
 <script>
-a = change_theme("start");
-
-shadow("start");
-document.getElementById("cell").onmouseover = function() {shadow(4);};
-document.getElementById("cell").onmouseout  = function() {shadow(2);};
-
+  change_theme("start");
 </script>
 
 </body>

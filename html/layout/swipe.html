@@ -1,0 +1,186 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- ................................ HEAD .................................. -->
+<head>
+   
+  <title>Swipe Layout Test</title>
+
+  <link id="pagestyle" rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-red.min.css">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <script src="//storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+  <link rel="stylesheet" type="text/css" href="layout.css">
+  
+  
+  <script src="layout.js"></script>
+  <script src="swipe.js"></script>
+
+</head>
+
+<!-- ................................ HEAD .................................. -->
+
+
+
+<body>
+
+
+<div data-role="page" id="temp">
+ <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+    <header data-role="header" data-tap-toggle="false" >
+    	<div  class="mdl-layout__header" >
+      	<div class="mdl-layout__tab-bar mdl-js-ripple-effect"  >
+         	<a href="#temp"  class="mdl-layout__tab is-active" >Temperature</a>
+        	<a href="#lights"  class="mdl-layout__tab " >Lights</a>
+        	<a href="#sec"  class="mdl-layout__tab " >Security</a>
+      	</div>
+    	</div>      
+    </header>
+    
+    <main class="mdl-layout__content">
+    	<!-- Temperature Content -->
+      <div class="mdl-grid" style="padding-top:50px">
+        <div class="mdl-cell mdl-shadow--2dp"  id="cell">
+          <div class="title-cont">
+            <h1 id="title">
+              <i class="material-icons" id="mdl-icon_title">wb_sunny</i>
+            </h1>
+            <h1 id="title">
+              Temperature
+            </h1>
+            <h1 id="title">
+              <i class="material-icons" id="mdl-icon_title">wb_sunny</i>
+            </h1>
+          </div><!-- End Title -->
+        </div> <!-- End mdl-cell -->
+      </div> <!-- End mdl-grid -->
+      <!-- Temperature Content -->
+		</main>
+  
+		<!-- .................... Footer ................ -->
+    <footer id="foot-temp" class="mdl-mini-footer">
+      <div class="mdl-mini-footer__left-section">
+          <button id="theme-temp" onclick="change_theme('','temp')" class="mdl-button mdl-js-button mdl-button--raised" style="background:white">
+          </button>
+      </div>
+    </footer>
+    <!-- .................... End Footer ................ -->
+  </div>
+</div>
+
+
+
+<div data-role="page" id="lights">
+ <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+    <header data-role="header"  data-tap-toggle="false" >
+    	<div  class="mdl-layout__header" >
+      	<div class="mdl-layout__tab-bar mdl-js-ripple-effect"  >
+         	<a href="#temp"  class="mdl-layout__tab " >Temperature</a>
+        	<a href="#lights"  class="mdl-layout__tab is-active" >Lights</a>
+        	<a href="#sec"  class="mdl-layout__tab " >Security</a>
+      	</div>
+    	</div>      
+    </header>
+    
+    <main class="mdl-layout__content">
+     <!-- Lights Content -->
+     <div class="mdl-grid" style="padding-top:50px">
+       <div class="mdl-cell mdl-shadow--2dp" >
+         <div class="title-cont">
+           <h1 id="title">
+             <i class="material-icons" id="mdl-icon_title">lightbulb_outline</i>
+           </h1>
+           <h1 id="title">
+             Lights
+           </h1>
+           <h1 id="title">
+             <i class="material-icons" id="mdl-icon_title">lightbulb_outline</i>
+           </h1>
+         </div><!-- End Title -->
+       </div> <!-- End mdl-cell -->
+     </div> <!-- End mdl-grid -->
+     <!-- Lights Content -->
+		</main>
+  
+		<!-- .................... Footer ................ -->
+    <footer id="foot-lights" class="mdl-mini-footer">
+      <div class="mdl-mini-footer__left-section">
+          <button id="theme-lights" onclick="change_theme('','lights')" class="mdl-button mdl-js-button mdl-button--raised" style="background:white">
+          </button>
+      </div>
+    </footer>
+    <!-- .................... End Footer ................ -->
+  </div>
+</div>
+
+
+
+
+<div data-role="page" id="sec">
+ <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+    <header data-role="header"  data-tap-toggle="false" >
+    	<div  class="mdl-layout__header" >
+      	<div class="mdl-layout__tab-bar mdl-js-ripple-effect"  >
+         	<a href="#temp"  class="mdl-layout__tab " >Temperature</a>
+        	<a href="#lights"  class="mdl-layout__tab " >Lights</a>
+        	<a href="#sec"  class="mdl-layout__tab is-active" >Security</a>
+      	</div>
+    	</div>      
+    </header>
+    
+    <main class="mdl-layout__content">
+     <!-- Security Content -->
+     <div class="mdl-grid" style="padding-top:50px">
+       <div class="mdl-cell mdl-shadow--2dp" >
+         <div class="title-cont">
+           <h1 id="title">
+             <i class="material-icons" id="mdl-icon_title">security</i>
+           </h1>
+           <h1 id="title">
+             Security
+           </h1>
+           <h1 id="title">
+             <i class="material-icons" id="mdl-icon_title">security</i>
+           </h1>
+         </div><!-- End Title -->
+       </div> <!-- End mdl-cell -->
+     </div> <!-- End mdl-grid -->
+     <!-- Security Content -->
+    </main>
+    
+		<!-- .................... Footer ................ -->
+    <footer id="foot-sec" class="mdl-mini-footer">
+      <div class="mdl-mini-footer__left-section">
+          <button id="theme-sec" onclick="change_theme('','sec')" class="mdl-button mdl-js-button mdl-button--raised" style="background:white">
+          </button>
+      </div>
+    </footer>
+    <!-- .................... End Footer ................ -->
+
+  </div>
+</div>
+
+</body>
+
+
+
+<script>
+  change_theme("start","temp");
+  change_theme("start","lights");
+  change_theme("start","sec");
+</script>
+
+
