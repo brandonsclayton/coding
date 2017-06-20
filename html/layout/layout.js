@@ -17,7 +17,7 @@ function swap_style(tab)
   else if (tab == 'sec'){ var sheet = sec_style;    var foot = sec_foot;}
   
   document.getElementById("pagestyle").setAttribute("href", sheet);
-  document.getElementById("foot-"+tab).style.backgroundColor = foot;
+  document.getElementById("foot").style.backgroundColor = foot;
 }
 //------------- End Set Style Sheet Function ---------------------------------- //
 
@@ -27,7 +27,7 @@ function swap_style(tab)
 
 // ....................... Change to Light/Dark Mode ...................... //
 
-function change_theme(stat,tab)
+function change_theme(stat)
 {
   var light_bg =   "#FAFAFA";
   var light_card = "white";
@@ -39,40 +39,40 @@ function change_theme(stat,tab)
   {
     document.body.style.backgroundColor = light_bg ;
     //document.getElementById("cell").style.backgroundColor = light_card;
-    document.getElementById("theme-"+tab).style.backgroundColor = light_card;
+    document.getElementById("theme").style.backgroundColor = light_card;
 
-    document.getElementById("theme-"+tab).innerHTML = "Dark Mode";
-    document.getElementById("theme-"+tab).value = "light"; 
+    document.getElementById("theme").innerHTML = "Dark Mode";
+    document.getElementById("theme").value = "light"; 
   }
   else
   {
-    var theme = document.getElementById("theme-"+tab).value;//document.body.style.backgroundColor;
+    var theme = document.getElementById("theme").value;//document.body.style.backgroundColor;
 
     if (theme == "light")
     {
       document.body.style.backgroundColor = dark_bg;
-      document.getElementById("theme-"+tab).style.backgroundColor = dark_card;
+      document.getElementById("theme").style.backgroundColor = dark_card;
       //document.getElementById("cell").style.backgroundColor = dark_card;
       
       document.body.style.color = "white";
-      document.getElementById("theme-"+tab).style.color = "white";
+      document.getElementById("theme").style.color = "white";
       
-      document.getElementById("theme-"+tab).innerHTML = "Light Mode";
+      document.getElementById("theme").innerHTML = "Light Mode";
       
-      document.getElementById("theme-"+tab).value = "dark"; 
+      document.getElementById("theme").value = "dark"; 
     }
     else
     {
       document.body.style.backgroundColor = light_bg;
-      document.getElementById("theme-"tab).style.backgroundColor = light_card;
+      document.getElementById("theme").style.backgroundColor = light_card;
       //document.getElementById("cell").style.backgroundColor = light_card;
       
       document.body.style.color = "black";
-      document.getElementById("theme-"+tab).style.color = "black"
+      document.getElementById("theme").style.color = "black"
       
-      document.getElementById("theme-"+tab).innerHTML = "Dark Mode";
+      document.getElementById("theme").innerHTML = "Dark Mode";
       
-      document.getElementById("theme-"+tab).value = "light"; 
+      document.getElementById("theme").value = "light"; 
     }
   }
 }

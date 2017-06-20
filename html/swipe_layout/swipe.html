@@ -9,8 +9,8 @@
 <head>
    
   <title>Swipe Layout Test</title>
-
   <link id="pagestyle" rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-red.min.css">
+
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,13 +32,13 @@
 
 <!-- ................................ HEAD .................................. -->
 
+<body>
 
 
 
-
-<div data-role="page" id="temp">
+<div data-role="page" id="temp" >
  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
-    <header data-role="header" data-tap-toggle="false" >
+    <header data-role="header" data-theme="b">
     	<div  class="mdl-layout__header" >
       	<div class="mdl-layout__tab-bar mdl-js-ripple-effect"  >
          	<a href="#temp"  class="mdl-layout__tab is-active" >Temperature</a>
@@ -66,12 +66,13 @@
         </div> <!-- End mdl-cell -->
       </div> <!-- End mdl-grid -->
       <!-- Temperature Content -->
-		</main>
+		  <p id="test"></p>
+    </main>
   
 		<!-- .................... Footer ................ -->
     <footer id="foot-temp" class="mdl-mini-footer">
       <div class="mdl-mini-footer__left-section">
-          <button id="theme-temp" onclick="change_theme('','temp')" class="mdl-button mdl-js-button mdl-button--raised" style="background:white">
+          <button id="theme-temp"  class="mdl-button mdl-js-button mdl-button--raised" style="background:white">
           </button>
       </div>
     </footer>
@@ -116,7 +117,7 @@
 		<!-- .................... Footer ................ -->
     <footer id="foot-lights" class="mdl-mini-footer">
       <div class="mdl-mini-footer__left-section">
-          <button id="theme-lights" onclick="change_theme('','lights')" class="mdl-button mdl-js-button mdl-button--raised" style="background:white">
+          <button id="theme-lights" class="mdl-button mdl-js-button mdl-button--raised" style="background:white">
           </button>
       </div>
     </footer>
@@ -162,7 +163,7 @@
 		<!-- .................... Footer ................ -->
     <footer id="foot-sec" class="mdl-mini-footer">
       <div class="mdl-mini-footer__left-section">
-          <button id="theme-sec" onclick="change_theme('','sec')" class="mdl-button mdl-js-button mdl-button--raised" style="background:white">
+          <button id="theme-sec" class="mdl-button mdl-js-button mdl-button--raised" style="background:white">
           </button>
       </div>
     </footer>
@@ -175,9 +176,10 @@
 
 
 <script>
-  change_theme("start","temp");
-  change_theme("start","lights");
-  change_theme("start","sec");
+change_theme('start','temp');
+change_theme('start','lights');
+change_theme('start','sec');
 </script>
 
+</body>
 </html>

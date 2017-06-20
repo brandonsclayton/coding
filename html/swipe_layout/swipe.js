@@ -1,40 +1,3 @@
-
-
-$(document).on('swipeleft', '.ui-page', function(event){    
-    if(event.handled !== true) // This will prevent event triggering more then once
-    {    
-        var nextpage = $.mobile.activePage.next('[data-role="page"]');
-        // swipe using id of next page if exists
-        if (nextpage.length > 0) {
-            $.mobile.changePage(nextpage, {transition: "slide", reverse: false}, true, true);
-        }
-        event.handled = true;
-    }
-    return false;         
-});
-
-$(document).on('swiperight', '.ui-page', function(event){     
-    if(event.handled !== true) // This will prevent event triggering more then once
-    {      
-        var prevpage = $(this).prev('[data-role="page"]');
-        if (prevpage.length > 0) {
-            $.mobile.changePage(prevpage, {transition: "slide", reverse: true}, true, true);
-        }
-        event.handled = true;
-    }
-    return false;            
-});
-
-
-
-$(document).on("pagechange", function (e, data) {
-    var page = data.toPage[0].id;
-    swap_style(page);
-});
-
-
-
-
 //.................. Set Style Sheet Function .................................. //
 function swap_style(tab)
 {   
@@ -67,49 +30,93 @@ function change_theme(stat,tab)
 
   var dark_bg =    "#303030";
   var dark_card =  "#424242";
-
+  
+  theme_id = 'theme-'+tab;
+  
+  
   if (stat == "start")
   {
     document.body.style.backgroundColor = light_bg ;
     //document.getElementById("cell").style.backgroundColor = light_card;
-    document.getElementById("theme-"+tab).style.backgroundColor = light_card;
+    document.getElementById(theme_id).style.backgroundColor = light_card;
 
-    document.getElementById("theme-"+tab).innerHTML = "Dark Mode";
-    document.getElementById("theme-"+tab).value = "light"; 
+    document.getElementById(theme_id).innerHTML = "Dark Mode";
+    document.getElementById(theme_id).value = "light"; 
   }
   else
   {
-    var theme = document.getElementById("theme-"+tab).value;//document.body.style.backgroundColor;
+    var theme = document.getElementById(theme_id).value;//document.body.style.backgroundColor;
 
     if (theme == "light")
     {
       document.body.style.backgroundColor = dark_bg;
-      document.getElementById("theme-"+tab).style.backgroundColor = dark_card;
+      document.getElementById(theme_id).style.backgroundColor = dark_card;
       //document.getElementById("cell").style.backgroundColor = dark_card;
       
       document.body.style.color = "white";
-      document.getElementById("theme-"+tab).style.color = "white";
+      document.getElementById(theme_id).style.color = "white";
       
-      document.getElementById("theme-"+tab).innerHTML = "Light Mode";
+      document.getElementById(theme_id).innerHTML = "Light Mode";
       
-      document.getElementById("theme-"+tab).value = "dark"; 
+      document.getElementById(theme_id).value = "dark"; 
     }
     else
     {
       document.body.style.backgroundColor = light_bg;
-      document.getElementById("theme-"tab).style.backgroundColor = light_card;
+      document.getElementById(theme_id).style.backgroundColor = light_card;
       //document.getElementById("cell").style.backgroundColor = light_card;
       
       document.body.style.color = "black";
-      document.getElementById("theme-"+tab).style.color = "black"
+      document.getElementById(theme_id).style.color = "black"
       
-      document.getElementById("theme-"+tab).innerHTML = "Dark Mode";
+      document.getElementById(theme_id).innerHTML = "Dark Mode";
       
-      document.getElementById("theme-"+tab).value = "light"; 
+      document.getElementById(theme_id).value = "light"; 
     }
   }
 }
 //-------------- End Change to Light/Dark Mode ------------------------ //
+
+
+
+
+
+$(document).on('swipeleft', '.ui-page', function(event){    
+    if(event.handled !== true) // This will prevent event triggering more then once
+    {    
+        var nextpage = $.mobile.activePage.next('');
+        // swipe using id of next page if exists
+        if (nextpage.length > 0) {
+            $.mobile.changePage(nextpage, {transition: "slide", reverse: false}, true, true);
+        }
+        event.handled = true;
+    }
+    return false;         
+});
+
+$(document).on('swiperight', '.ui-page', function(event){     
+    if(event.handled !== true) // This will prevent event triggering more then once
+    {      
+        var prevpage = $(this).prev('');
+        if (prevpage.length > 0) {
+            $.mobile.changePage(prevpage, {transition: "slide", reverse: true}, true, true);
+        }
+        event.handled = true;
+    }
+    return false;            
+});
+
+
+$(document).on("pagechange", function (e, data) {
+    var page = data.toPage[0].id;
+    swap_style(page);
+});
+
+
+
+
+
+
 
 
 
