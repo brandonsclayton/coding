@@ -31,46 +31,46 @@ function change_theme(stat,tab)
   var dark_bg =    "#303030";
   var dark_card =  "#424242";
   
-  theme_id = 'theme-'+tab;
-  
+  var theme_id = 'theme-'+tab;
+  var cell_id = 'cell-'+tab;
   
   if (stat == "start")
   {
-    document.body.style.backgroundColor = light_bg ;
-    //document.getElementById("cell").style.backgroundColor = light_card;
-    document.getElementById(theme_id).style.backgroundColor = light_card;
+    //document.body.style.backgroundColor = light_bg ;
+    //document.getElementById(cell_id).style.backgroundColor = light_card;
+    //document.getElementById(theme_id).style.backgroundColor = light_card;
 
-    document.getElementById(theme_id).innerHTML = "Dark Mode";
     document.getElementById(theme_id).value = "light"; 
+    document.getElementById(theme_id).innerHTML = "Dark Mode";
   }
   else
   {
-    var theme = document.getElementById(theme_id).value;//document.body.style.backgroundColor;
+    var theme = document.getElementById(theme_id).value;
+    document.getElementById('test').innerHTML = theme;
 
     if (theme == "light")
     {
-      document.body.style.backgroundColor = dark_bg;
-      document.getElementById(theme_id).style.backgroundColor = dark_card;
-      //document.getElementById("cell").style.backgroundColor = dark_card;
+      //document.body.style.backgroundColor = dark_bg;
+      //document.getElementById(theme_id).style.backgroundColor = dark_card;
+      //document.getElementById(cell_id).style.backgroundColor = dark_card;
       
-      document.body.style.color = "white";
-      document.getElementById(theme_id).style.color = "white";
-      
+      //document.body.style.color = "white";
+      //document.getElementById(theme_id).style.color = "white";
+      //document.getElementById(cell_id).style.color = "white";
       document.getElementById(theme_id).innerHTML = "Light Mode";
-      
       document.getElementById(theme_id).value = "dark"; 
+      
     }
     else
     {
-      document.body.style.backgroundColor = light_bg;
-      document.getElementById(theme_id).style.backgroundColor = light_card;
-      //document.getElementById("cell").style.backgroundColor = light_card;
+      //document.body.style.backgroundColor = light_bg;
+      //document.getElementById(theme_id).style.backgroundColor = light_card;
+      //document.getElementById(cell_id).style.backgroundColor = light_card;
       
-      document.body.style.color = "black";
-      document.getElementById(theme_id).style.color = "black"
-      
+     // document.body.style.color = "black";
+      ///document.getElementById(theme_id).style.color = "black"
+      //document.getElementById(cell_id).style.color = "black"
       document.getElementById(theme_id).innerHTML = "Dark Mode";
-      
       document.getElementById(theme_id).value = "light"; 
     }
   }
