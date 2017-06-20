@@ -1,0 +1,80 @@
+html, body
+{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    font-family:Roboto;
+}
+
+
+#foot-temp,
+#foot-lights,
+#foot-sec
+{
+  background-color: #F44336;
+}
+
+#title
+{
+    width:33%;
+    text-align:center;
+    margin-top:2px;
+    margin-bottom:2px;
+    font-size: 40px;
+}
+
+.title-cont
+{
+    width:100%;
+    display:inline-flex;
+}
+
+.mdl-layout__content
+{
+    flex:1 0 auto;
+    padding:0;
+}
+
+
+
+.mdl-cell
+{
+    margin: 0 auto;
+  
+}
+
+#mdl-card_text
+{
+    padding:0px;
+}
+
+
+#mdl-icon_title
+{
+    font-size:50px;
+    vertical-align:middle;
+}
+
+.mdl-mini-footer
+{
+  margin:0;
+  padding:0;
+  max-height:4em;
+}
+
+
+.mdl-mini-footer__left-section
+{
+  padding-left:10px;
+}
+
+
+
+.mdl-layout__header
+{
+  min-height:30px;
+  max-height:50px;
+  padding-top:10px;
+  margin:0;
+}
