@@ -1,0 +1,9 @@
+#!/bin/bash
+
+log="upload/upload.log"
+jr=-1
+while true;do
+    ((jr++))
+    python temp_to_artik_cloud.py > $log
+    wait
+done
