@@ -34,14 +34,14 @@ os.system('clear')
 ###########################################################################
 #
 #................... Variables ............................................
-arduino='/dev/ttyACM7'                              # Arduino device for serial communication
+arduino='/dev/ttyACM0'                              # Arduino device for serial communication
 
 device_id = '1497d25089db4a8d84997fd5b2a3d65f'      # Arduino device ID for Artik cloud
 device_token = '17d85311bc7f46519a75a5138c46f221'   # Arduino device token for Artik cloud
 
 ac_msg = {}                                         # Dictionary for Artik Cloud messages
    
-wait = 60                                           # Time to wait in seconds
+wait = 90                                           # Time to wait in seconds
 
 room_id = [ "temp_hub",      "Living_Room_Temperature",      
             "temp_sensor00", "Bedroom_Temperature"]
