@@ -3,7 +3,7 @@
 import serial
 import time
 
-ser = serial.Serial('/dev/ttyACM1',9600)
+ser = serial.Serial('/dev/ttyACM3',9600)
 
 
 while(True):
