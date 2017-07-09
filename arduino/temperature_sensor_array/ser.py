@@ -3,10 +3,13 @@
 import serial
 import time
 
-ser = serial.Serial('/dev/ttyACM3',9600)
+ser = serial.Serial('/dev/ttyACM5',9600)
 
 
 while(True):
-    #start_time = time.time()
-    strg = ser.readline()
-    print strg
+  msg = ser.readline()
+  msg_ck = msg.split(':')
+  if msg.split[0] == 'MSG':
+    msg = msg_ck[1]
+    print msg
+

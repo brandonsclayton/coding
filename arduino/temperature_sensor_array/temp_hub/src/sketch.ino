@@ -24,6 +24,9 @@ char sensor_id[] = "temp_hub";          // Sensor id
 char temp_str[6];                       // String to hold temp 
 char msg[50];                           // String to hold message to send
 char err[100];                          // String to hold an error message
+char art_msg[200];
+char *sensor_id_msg;
+char *temp_msg;
 
 long wait = 1000;                       // Wait time in mili seconds per temp reading
 
@@ -127,8 +130,6 @@ void loop()
   //..................... Get Message ................................
   if (rf69.available())
   {
-    char *sensor_id_msg;
-    char *temp_msg;
 
     // Should be a message for us now   
     uint8_t buf[RH_RF69_MAX_MESSAGE_LEN];
@@ -148,6 +149,16 @@ void loop()
   }
   //------------------------------------------------------------------
   
+  
+  
+  // .............. Make Message for Artik Cloud .....................
+  
+  sprintf(art_msg,"MSG: %s:%s, %s:%s",sensor_id,temp,sensor_id_msg,temp_msg);
+
+  Serial.print(art_msg);
+  
+  //------------------------------------------------------------------
+
   delay(wait);
 
 }
