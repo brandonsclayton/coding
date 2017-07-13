@@ -1,6 +1,6 @@
 #!/bin/bash
 
-log="upload/upload.log"
+log="upload.log"
 jr=-1
 while true;do
     ((jr++))
