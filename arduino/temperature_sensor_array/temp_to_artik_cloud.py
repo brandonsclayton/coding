@@ -41,7 +41,7 @@ device_token = '17d85311bc7f46519a75a5138c46f221'   # Arduino device token for A
 
 ac_msg = {}                                         # Dictionary for Artik Cloud messages
    
-wait = 90                                           # Time to wait in seconds
+wait = 45                                           # Time to wait in seconds
 
 room_id = [ "temp_hub",      "Living_Room_Temperature",      
             "temp_sensor00", "Bedroom_Temperature"]
@@ -66,7 +66,11 @@ api_instance = artikcloud.MessagesApi()                     # Get messaging API
 #
 ###########################################################################
 
-print '\n\n --------- Connecting -------------- \n\n\n'
+
+Flog='upload.log'
+Flog_out=open(Flog,'w')
+
+Flog_out.write('\n\n --------- Connecting -------------- \n\n\n')
 
 while(True):
 
@@ -82,7 +86,7 @@ while(True):
   
   #................... Make Message to Send .................................
   if msg_ck[0] == 'MSG':
-    print '---------------------------------------------------'
+    Flog_out.write('---------------------------------------------------')
     msg = msg_ck[1:]          # Get rest of message from the Arduino
     nmsg = len(msg)           # Get length of message
     sensor_id = [];           # Allocate for sensor id
@@ -91,8 +95,8 @@ while(True):
       sensor_id.append(msg[js])
       temp.append(msg[js+1])
   
-    print 'Sensor ID: %s '%sensor_id
-    print 'Temperature: %s '%temp
+    Flog_out.write('Sensor ID: %s '%sensor_id)
+    Flog_out.write('Temperature: %s '%temp)
 
     jj=0
     for js in range(ns):
@@ -104,12 +108,12 @@ while(True):
     ts = None                                             # Custom time stamp
     data = artikcloud.Message(ac_msg, device_sdid, ts)    # Construct a Message object
 
-    print "\n\nMessage to Send:"
-    print data
+    Flog_out.write("\n\nMessage to Send:")
+    Flog_out.write(data)
 
-    print '\nSending message at: '
+    Flog_out.write('\nSending message at: ')
     os.system('echo $(date)')
-    print '\n\n'
+    Flog_out.write('\n\n')
     #--------------- End Make Message to Send --------------------------------
 
     #....................... Send Message to Artik Cloud ......................
@@ -124,8 +128,8 @@ while(True):
       pprint("Exception when calling MessagesApi->send_message: %s\n" % e)
     
     
-    print '\n\n Waiting %d seconds'%wait
-    print '---------------------------------------------------\n\n\n'
+    Flog_out.write('\n\n Waiting %d seconds'%wait)
+    Flog_out.write('---------------------------------------------------\n\n\n')
     sleep(wait)         # Wait befor proceding to upload another data point
     #----------------- End Send Message to Artik Cloud ------------------------
   
@@ -135,7 +139,7 @@ while(True):
 
     
 
-
+Flog.close()
 
 #######################----------------- END ------------- END --------------################################
 

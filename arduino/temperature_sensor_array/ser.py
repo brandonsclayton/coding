@@ -3,7 +3,7 @@
 import serial
 import time
 
-ser = serial.Serial('/dev/ttyACM7',9600)
+ser = serial.Serial('/dev/ttyACM0',9600)
 
 ns = 2  # Number of sensors
 
