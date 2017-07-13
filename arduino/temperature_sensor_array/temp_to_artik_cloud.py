@@ -16,7 +16,7 @@
 import artikcloud
 from artikcloud.rest import ApiException
 import sys, getopt
-import time, random, json
+import random, json
 from pprint import pprint
 import serial
 import os
@@ -34,14 +34,14 @@ os.system('clear')
 ###########################################################################
 #
 #................... Variables ............................................
-arduino='/dev/ttyACM0'                              # Arduino device for serial communication
+arduino='/dev/ttyACM1'                              # Arduino device for serial communication
 
 device_id = '1497d25089db4a8d84997fd5b2a3d65f'      # Arduino device ID for Artik cloud
 device_token = '17d85311bc7f46519a75a5138c46f221'   # Arduino device token for Artik cloud
 
 ac_msg = {}                                         # Dictionary for Artik Cloud messages
    
-wait = 45                                           # Time to wait in seconds
+wait = 40                                           # Time to wait in seconds
 
 room_id = [ "temp_hub",      "Living_Room_Temperature",      
             "temp_sensor00", "Bedroom_Temperature"]
@@ -68,6 +68,7 @@ api_instance = artikcloud.MessagesApi()                     # Get messaging API
 
 
 print ('\n\n --------- Connecting -------------- \n\n\n')
+ser = serial.Serial(arduino,9600)           # Connect to Arduino
 
 while(True):
 
@@ -76,14 +77,13 @@ while(True):
   #............ Serial Communication with Arduino and Send to Artik Cloud ................
   
   #.................... Serial Communication with Arduino ...................
-  ser = serial.Serial(arduino,9600)           # Connect to Arduino
   msg = ser.readline().strip()
   msg_ck = msg.split(':')
   #--------------------- End Serial Communication --------------------------
   
   #................... Make Message to Send .................................
   if msg_ck[0] == 'MSG':
-    Flog_out.write('---------------------------------------------------')
+    print ('---------------------------------------------------')
     msg = msg_ck[1:]          # Get rest of message from the Arduino
     nmsg = len(msg)           # Get length of message
     sensor_id = [];           # Allocate for sensor id
@@ -94,7 +94,7 @@ while(True):
   
     print ('Sensor ID: %s '%sensor_id)
     print ('Temperature: %s '%temp)
-
+    
     jj=0
     for js in range(ns):
       for jr in range(nroom):
@@ -110,7 +110,7 @@ while(True):
 
     print ('\nSending message at: ')
     os.system('echo $(date)')
-    Flog_out.write('\n\n')
+    print ('\n\n')
     #--------------- End Make Message to Send --------------------------------
 
     #....................... Send Message to Artik Cloud ......................
@@ -133,7 +133,6 @@ while(True):
   #--------------------------------------------------------------------------------------
   #
   #######################################################################################
-    
 
 
 #######################----------------- END ------------- END --------------################################
