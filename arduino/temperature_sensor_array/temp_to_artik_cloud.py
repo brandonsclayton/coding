@@ -67,10 +67,7 @@ api_instance = artikcloud.MessagesApi()                     # Get messaging API
 ###########################################################################
 
 
-Flog='upload.log'
-Flog_out=open(Flog,'w')
-
-Flog_out.write('\n\n --------- Connecting -------------- \n\n\n')
+print ('\n\n --------- Connecting -------------- \n\n\n')
 
 while(True):
 
@@ -95,8 +92,8 @@ while(True):
       sensor_id.append(msg[js])
       temp.append(msg[js+1])
   
-    Flog_out.write('Sensor ID: %s '%sensor_id)
-    Flog_out.write('Temperature: %s '%temp)
+    print ('Sensor ID: %s '%sensor_id)
+    print ('Temperature: %s '%temp)
 
     jj=0
     for js in range(ns):
@@ -108,10 +105,10 @@ while(True):
     ts = None                                             # Custom time stamp
     data = artikcloud.Message(ac_msg, device_sdid, ts)    # Construct a Message object
 
-    Flog_out.write("\n\nMessage to Send:")
-    Flog_out.write(data)
+    print ("\n\nMessage to Send:")
+    print (data)
 
-    Flog_out.write('\nSending message at: ')
+    print ('\nSending message at: ')
     os.system('echo $(date)')
     Flog_out.write('\n\n')
     #--------------- End Make Message to Send --------------------------------
@@ -128,18 +125,16 @@ while(True):
       pprint("Exception when calling MessagesApi->send_message: %s\n" % e)
     
     
-    Flog_out.write('\n\n Waiting %d seconds'%wait)
-    Flog_out.write('---------------------------------------------------\n\n\n')
+    print ('\n\n Waiting %d seconds'%wait)
+    print ('---------------------------------------------------\n\n\n')
     sleep(wait)         # Wait befor proceding to upload another data point
     #----------------- End Send Message to Artik Cloud ------------------------
   
   #--------------------------------------------------------------------------------------
   #
   #######################################################################################
-
     
 
-Flog.close()
 
 #######################----------------- END ------------- END --------------################################
 
