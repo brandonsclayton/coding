@@ -1,0 +1,68 @@
+<html>
+<head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Day');
+      data.addColumn('number', 'Guardians of the Galaxy');
+      
+      /*
+      data.addRows([
+        [1,  37.8],
+        [2,  30.9],
+        [3,  25.4],
+        [4,  11.7],
+        [5,  11.9],
+        [6,   8.8],
+      ]);
+      */
+			var a = [1500997291236,1500997250170,1500997209115,1500997168047,1500997127088,1500997086181];
+      var b = [37.8,30.9,25.4,11.7,11.9,8.8];
+		  var nm = a.length;
+      
+  		var date_options = { year: 'numeric', month: 'long',day: 'numeric'};            // Format options for date
+  		var time_options = { hour: 'numeric', minute: 'numeric',second:'numeric'};      // Format options for time
+
+      data.addRows(nm);
+      for(jr=0;jr<nm;jr++)
+      {
+      	var time = new Date(a[jr]);                                                        // Get time and date from ts
+  			var date_string = time.toLocaleString("en",date_options);                       // Set new date format
+  			var time_string  = time.toLocaleString("en",time_options);                      // Set new time format
+        data.setCell(jr,0,time_string);
+        data.setCell(jr,1,b[jr]);
+      
+      }
+
+      var options = {
+        chart: {
+          title: 'Box Office Earnings in First Two Weeks of Opening',
+          subtitle: 'in millions of dollars (USD)'
+        },
+        width: 1500,
+        height: 500,
+        axes: {
+          x: {
+            0: {side: 'top'}
+          }
+        },
+        hAxis:{format:'decimal'},
+        vAxis:{format:'decimal'}
+      };
+
+      var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+  </script>
+</head>
+<body>
+  <div id="line_top_x"></div>
+</body>
+</html>
+
