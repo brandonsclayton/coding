@@ -10,8 +10,8 @@
   
   #b1{margin:2em}
   #graph{width:80%;min-height:50%;}
-</style>
 
+</style>
 
 <html>
 
@@ -45,13 +45,38 @@
   </div>
   <p id="test">Getting</p>
   <!-- .................. End Graph .................. -->
+  
+
+
+<label id="check" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" >
+  <input type="checkbox" class="mdl-checkbox__input"  checked/>
+    <span class="mdl-checkbox__label">Check Me</span>
+</label>
+<input type="button" value="test check" id="btn"/>
 
 </body>
 </html>
   
   
 <script type="text/javascript">
-  
+
+var test_id = document.getElementById('test');
+$("#check").click(function() {check_box()});
+
+function check_box()
+{
+	if($('#check').is('.is-checked')) 
+	{
+    //document.querySelector('#check').MaterialCheckbox.uncheck();
+    test_id.innerHTML = 'Not checked'; 
+  }
+  else 
+  {
+    test_id.innerHTML = 'Checked'; 
+  	//document.querySelector('#check').MaterialCheckbox.check();
+  }
+}
+
 msg_history('start');
   
 function msg_history(state)
@@ -122,24 +147,25 @@ function msg_history(state)
     function drawChart() 
     {
       chart.draw(data, options);
-      document.getElementById('test').innerHTML = JSON.stringify(options) + '<br>' + col;
-    }
-
-    button.onclick = function() 
-    {
-      // Generating a random x, y pair and inserting it so rows are sorted.
-      var y = (Math.random() * 100);
-      var z = y*1.25;
-      var where = 0;
-      while (where < data.getNumberOfRows() ) 
-      {
-        where++;
-      }
-      x = where+1;
-      data.insertRows(where, [[x.toString(), y,z]]);
-      drawChart();
+      //document.getElementById('test').innerHTML = JSON.stringify(options) + '<br>' + col;
     }
     
+    /*
+    button.onclick = function() 
+    {
+      var rand = (Math.random()*1.5);
+      data.addColumn('number','Test');
+      var nr = living_temp.length;
+      var ncol = data.getNumberOfColumns()-1;
+      for (jr=0;jr<nr;jr++)
+      {
+        var test_temp = living_temp[jr]*rand; 
+        data.setCell(jr,ncol,test_temp);
+      }
+      drawChart();
+
+    }
+    */
     function myClickHandler(e)
     {
       //var selection = chart.getSelection();
