@@ -1,67 +1,143 @@
+<style>
+  html, body
+  {   
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%; 
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  #b1{margin:2em}
+  #graph
+  {
+    height:600px;
+    width:800px;
+    margin:auto;
+    text-align:center;
+  }
+</style>
 
 
 <html>
+
+	<head>
+ 		<!-- Google Material Design -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  	<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script> 
+  	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+  	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+  	<!-- ............................ -->
+		
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>   <!-- Google Charts -->
+
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"> 
+  
+
+	</head>
+
+<body>
+  
+
+  <!-- .................... Graph .................. -->
   <button type="button" id="b1">Click</button>
-  <div id="visualization">Loading</div>
+  
+  <div class="mdl-grid mdl-shadow--2dp" id="graph">  
+      <div class="mdl-spinner mdl-js-spinner is-active"></div>
+  </div> <!-- End mdl-grid -->
+  <!-- .................. End Graph .................. -->
 
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript">
-    
-  msg_history('start');
-    
-  function msg_history(state)
+</body>
+</html>
+  
+  
+<script type="text/javascript">
+  
+msg_history('start');
+  
+function msg_history(state)
+{
+  google.charts.load('current', {'packages':['corechart','line']});
+ 	
+  google.charts.setOnLoadCallback(function()
   {
-    google.charts.load('current', {'packages':['line']});
-   	
-    google.charts.setOnLoadCallback(function()
+    var options = 
     {
-      var options = 
+      vAxis: 
       {
-        width: 400,
-        height: 240,
-        vAxis: {minValue:0, maxValue:100},
-        animation: 
-        {
-          duration: 1000,
-          easing: 'in'
-        }
-      };
+        title: 'Temperature (\u2109)',
+        minValue:0, 
+        maxValue:100,
+        format: 'decimal',
+        titleTextStyle: {italic: 'false',fontSize: 20, opacity: .75},
+        textStyle: {italic: 'false',fontSize: 14, opacity: .6}
+      },
+      hAxis: 
+      {
+        title: 'Time (minutes)',
+        format: 'decimal',
+        titleTextStyle: {italic: 'false',fontSize: 20, opacity: .75},
+        textStyle: {italic: 'false',fontSize: 14, opacity: .6}
+      },
+      curveType: 'function',
+      legend: {position: 'bottom', textStyle: {fontSize: 15, opacity: .75}},
+			backgroundColor: {strokeWidth: 2},
+      chartArea:{top:5,width:'80%',height:'80%'},
+      pointSize: 6,
+      lineWidth: 3,
+      animation: 
+      {
+        duration: 1000,
+        easing: 'in'
+      }
+    };
 
-      if (state == 'start')
-      {
-        //var chart = new google.visualization.LineChart(document.getElementById('visualization'));
-        var chart = new google.charts.Line(document.getElementById('visualization'));
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'x');
-        data.addColumn('number', 'y');
-        data.addRow(['1', 123]);
-        data.addRow(['2', 17]);
-      }
-      var button = document.getElementById('b1');
-    
-      function drawChart() 
-      {
-        chart.draw(data, options);
-      }
+    if (state == 'start')
+    {
+      var chart = new google.visualization.LineChart(document.getElementById('graph'));
+      //var chart = new google.charts.Line(document.getElementById('graph'));
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Time');
+      data.addColumn('number', 'Living Room Temperature');
+      data.addColumn('number', 'Bedroom Temperature');
+      data.addRow(['1', 10.5, 12.5]);
+      data.addRow(['2', 17.1, 19.1]);
+			data.addRow(['3', 20.5, 22.5]);
+      data.addRow(['4', 50.5, 52.5]);
+      data.addRow(['5', 58.1, 60.5]);
+			data.addRow(['6', 30.5, 32.1]);
+      data.addRow(['7', 15.5, 19.2]);
+      data.addRow(['8', 11.1, 15.6]);
+			data.addRow(['9', 50.5, 55.2]);
+    }
+    var button = document.getElementById('b1');
+  
+    function drawChart() 
+    {
+      chart.draw(data, options);
+    }
 
-      button.onclick = function() 
+    button.onclick = function() 
+    {
+      // Generating a random x, y pair and inserting it so rows are sorted.
+      var y = (Math.random() * 100);
+      var z = y*1.25;
+      var where = 0;
+      while (where < data.getNumberOfRows() ) 
       {
-        // Generating a random x, y pair and inserting it so rows are sorted.
-        var y = Math.floor(Math.random() * 100);
-        var where = 0;
-        while (where < data.getNumberOfRows() ) 
-        {
-          where++;
-        }
-        x = where+1;
-        data.insertRows(where, [[x.toString(), y]]);
-        drawChart();
+        where++;
       }
+      x = where+1;
+      data.insertRows(where, [[x.toString(), y,z]]);
       drawChart();
-    });
-  }
+    }
+    drawChart();
+  });
+}
 
 </script>
 
 
-</html>
