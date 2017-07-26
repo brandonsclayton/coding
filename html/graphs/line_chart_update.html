@@ -9,13 +9,7 @@
   }
   
   #b1{margin:2em}
-  #graph
-  {
-    height:600px;
-    width:800px;
-    margin:auto;
-    text-align:center;
-  }
+  #graph{width:80%;min-height:50%;}
 </style>
 
 
@@ -29,7 +23,8 @@
   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
   	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
   	<!-- ............................ -->
-		
+	  
+    <script src="https://www.google.com/jsapi"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>   <!-- Google Charts -->
@@ -45,9 +40,10 @@
   <!-- .................... Graph .................. -->
   <button type="button" id="b1">Click</button>
   
-  <div class="mdl-grid mdl-shadow--2dp" id="graph">  
-      <div class="mdl-spinner mdl-js-spinner is-active"></div>
-  </div> <!-- End mdl-grid -->
+  <div class="mdl-grid mdl-shadow--2dp" id="graph">
+    <div class="mdl-spinner mdl-js-spinner is-active"></div>
+  </div>
+  <p id="test">Getting</p>
   <!-- .................. End Graph .................. -->
 
 </body>
@@ -61,7 +57,7 @@ msg_history('start');
 function msg_history(state)
 {
   google.charts.load('current', {'packages':['corechart','line']});
- 	
+  var col;	
   google.charts.setOnLoadCallback(function()
   {
     var options = 
@@ -85,13 +81,17 @@ function msg_history(state)
       curveType: 'function',
       legend: {position: 'bottom', textStyle: {fontSize: 15, opacity: .75}},
 			backgroundColor: {strokeWidth: 2},
-      chartArea:{top:5,width:'80%',height:'80%'},
-      pointSize: 6,
+      chartArea:{top:10,width:'80%',height:'80%'},
       lineWidth: 3,
       animation: 
       {
-        duration: 1000,
+        duration: 500,
         easing: 'in'
+      },
+      series:
+      {
+        0:{pointSize:0},
+        1:{pointSize:0}
       }
     };
 
@@ -118,6 +118,7 @@ function msg_history(state)
     function drawChart() 
     {
       chart.draw(data, options);
+      document.getElementById('test').innerHTML = JSON.stringify(options) + '<br>' + col;
     }
 
     button.onclick = function() 
@@ -134,9 +135,42 @@ function msg_history(state)
       data.insertRows(where, [[x.toString(), y,z]]);
       drawChart();
     }
+    
+    function myClickHandler(e)
+    {
+      //var selection = chart.getSelection();
+      //var message = '';
+      var selection = e.targetID.split('#');
+      var id = selection[0];
+      if (selection.length > 1){var col = selection[1];}
+      
+      if (id == 'legendentry') 
+      {
+        options.series = JSON.parse('{"'+col+'":{"pointSize":4}}');
+      }
+      else  
+      {
+        options.series = {0:{pointSize:0},1:{pointSize:0}}; 
+        drawChart();
+      }
+      drawChart();
+    
+    } 
+
+    google.visualization.events.addListener(chart, 'click', myClickHandler);
+    
+    
     drawChart();
-  });
+  
+ 	  $(window).resize(function()
+    {
+      drawChart();
+	  }); 
+  
+	});
+
 }
+
 
 </script>
 
