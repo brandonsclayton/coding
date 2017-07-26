@@ -103,15 +103,19 @@ function msg_history(state)
       data.addColumn('string', 'Time');
       data.addColumn('number', 'Living Room Temperature');
       data.addColumn('number', 'Bedroom Temperature');
-      data.addRow(['1', 10.5, 12.5]);
-      data.addRow(['2', 17.1, 19.1]);
-			data.addRow(['3', 20.5, 22.5]);
-      data.addRow(['4', 50.5, 52.5]);
-      data.addRow(['5', 58.1, 60.5]);
-			data.addRow(['6', 30.5, 32.1]);
-      data.addRow(['7', 15.5, 19.2]);
-      data.addRow(['8', 11.1, 15.6]);
-			data.addRow(['9', 50.5, 55.2]);
+      var time          = ['1','2','3','4','5','6','7','8','9'];
+      var living_temp   = [10.5,17.1,20.5,50.5,58.1,30.5,15.5,11.1,50.5];
+      var bedroom_temp  = [12.5,19.1,22.5,55.5,60.1,32.5,18.5,13.1,55.5];
+
+      nr = living_temp.length;
+      data.addRows(nr);
+
+      for (jr=0;jr<nr;jr++)
+      {
+        data.setCell(jr,0,time[jr]);
+        data.setCell(jr,1,living_temp[jr]);
+        data.setCell(jr,2,bedroom_temp[jr]);
+      }
     }
     var button = document.getElementById('b1');
   
