@@ -38,7 +38,10 @@
   
 
   <!-- .................... Graph .................. -->
-  <button type="button" id="b1">Click</button>
+<label id="check" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" >
+  <input type="checkbox" class="mdl-checkbox__input"  checked/>
+    <span class="mdl-checkbox__label">Check Me</span>
+</label>
   
   <div class="mdl-grid mdl-shadow--2dp" id="graph">
     <div class="mdl-spinner mdl-js-spinner is-active"></div>
@@ -47,12 +50,6 @@
   <!-- .................. End Graph .................. -->
   
 
-
-<label id="check" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" >
-  <input type="checkbox" class="mdl-checkbox__input"  checked/>
-    <span class="mdl-checkbox__label">Check Me</span>
-</label>
-<input type="button" value="test check" id="btn"/>
 
 </body>
 </html>
@@ -81,6 +78,7 @@ msg_history('start');
   
 function msg_history(state)
 {
+  
   google.charts.load('current', {'packages':['corechart','line']});
   var col;	
   google.charts.setOnLoadCallback(function()
@@ -142,7 +140,6 @@ function msg_history(state)
         data.setCell(jr,2,bedroom_temp[jr]);
       }
     }
-    var button = document.getElementById('b1');
   
     function drawChart() 
     {
@@ -150,22 +147,33 @@ function msg_history(state)
       //document.getElementById('test').innerHTML = JSON.stringify(options) + '<br>' + col;
     }
     
-    /*
-    button.onclick = function() 
+    var check = document.getElementById('check');
+    
+    check.onclick = function () {set_graph();};
+    
+    function set_graph()
     {
-      var rand = (Math.random()*1.5);
-      data.addColumn('number','Test');
-      var nr = living_temp.length;
-      var ncol = data.getNumberOfColumns()-1;
-      for (jr=0;jr<nr;jr++)
+	    if($('#check').is('.is-checked')) 
       {
-        var test_temp = living_temp[jr]*rand; 
-        data.setCell(jr,ncol,test_temp);
+        var ncol = data.getNumberOfColumns()-1;
+        data.removeColumn(ncol);
       }
+      else
+      {
+        var nr = bedroom_temp.length;
+        data.addColumn('number', 'Bedroom Temperature');
+        var ncol = data.getNumberOfColumns()-1;
+        for (jr=0;jr<nr;jr++)
+        {
+          data.setCell(jr,ncol,bedroom_temp[jr]);
+        }
+      }
+        document.getElementById('test').innerHTML = ncol;
       drawChart();
+    };
 
-    }
-    */
+    
+    
     function myClickHandler(e)
     {
       //var selection = chart.getSelection();
