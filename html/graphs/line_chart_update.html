@@ -9,8 +9,14 @@
   }
   
   #b1{margin:2em}
-  #graph{width:80%;min-height:50%;}
-
+  #graph
+  {
+    width:85%;
+    height:30em;
+    padding-top:2em;
+  }
+  #switch_panel{width:12em;height:12em;font-size:2vmin;}
+  #grid{padding-top:4em;}
 </style>
 
 <html>
@@ -36,19 +42,50 @@
 
 <body>
   
-
+<div class="mdl-grid" id="grid">
   <!-- .................... Graph .................. -->
-<label id="check" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" >
-  <input type="checkbox" class="mdl-checkbox__input"  checked/>
-    <span class="mdl-checkbox__label">Check Me</span>
-</label>
   
-  <div class="mdl-grid mdl-shadow--2dp" id="graph">
+  <div class="mdl-cell mdl-shadow--2dp" id="graph">
     <div class="mdl-spinner mdl-js-spinner is-active"></div>
   </div>
-  <p id="test">Getting</p>
   <!-- .................. End Graph .................. -->
+
+  <!-- ............ Switches ........................ -->
   
+  <div id="switch_panel" class="mdl-cell mdl-shadow--2dp">
+    <ul class="mdl-list">
+  
+      <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+          Living Room 
+	      </span>
+        <span class="mdl-list__item-secondary-action">
+          <label id="living_check" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+            <input type="checkbox"  class="mdl-switch__input" checked />
+          </label>
+        </span>
+      </li>
+
+      <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+          Bedroom 
+	      </span>
+        <span class="mdl-list__item-secondary-action">
+          <label id="bedroom_check" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+            <input type="checkbox"  class="mdl-switch__input" checked />
+          </label>
+        </span>
+      </li>
+
+    </ul>
+  </div>
+  <!-- .......... End Switches ....................... -->
+</div>
+
+<p id="test">Getting</p>
+<br>
+<p id="opt">Getting</p>
+
 
 
 </body>
@@ -58,21 +95,6 @@
 <script type="text/javascript">
 
 var test_id = document.getElementById('test');
-$("#check").click(function() {check_box()});
-
-function check_box()
-{
-	if($('#check').is('.is-checked')) 
-	{
-    //document.querySelector('#check').MaterialCheckbox.uncheck();
-    test_id.innerHTML = 'Not checked'; 
-  }
-  else 
-  {
-    test_id.innerHTML = 'Checked'; 
-  	//document.querySelector('#check').MaterialCheckbox.check();
-  }
-}
 
 msg_history('start');
   
@@ -83,6 +105,13 @@ function msg_history(state)
   var col;	
   google.charts.setOnLoadCallback(function()
   {
+    var data = new google.visualization.DataTable();
+    var living_check = document.getElementById('living_check');
+    var bedroom_check = document.getElementById('bedroom_check');
+    
+    var living_clr  = '#3F51B5';    // Blue  
+    var bedroom_clr = '#4CAF50';    // green
+    
     var options = 
     {
       vAxis: 
@@ -91,19 +120,19 @@ function msg_history(state)
         minValue:0, 
         maxValue:100,
         format: 'decimal',
-        titleTextStyle: {italic: 'false',fontSize: 20, opacity: .75},
-        textStyle: {italic: 'false',fontSize: 14, opacity: .6}
+        titleTextStyle: {italic: 'false',fontSize: 14, opacity: .75},
+        textStyle: {italic: 'false',fontSize: 12, opacity: .6}
       },
       hAxis: 
       {
         title: 'Time (minutes)',
         format: 'decimal',
-        titleTextStyle: {italic: 'false',fontSize: 20, opacity: .75},
-        textStyle: {italic: 'false',fontSize: 14, opacity: .6}
+        titleTextStyle: {italic: 'false',fontSize: 14, opacity: .75},
+        textStyle: {italic: 'false',fontSize: 12, opacity: .6}
+        
       },
       curveType: 'function',
       legend: {position: 'bottom', textStyle: {fontSize: 15, opacity: .75}},
-			backgroundColor: {strokeWidth: 2},
       chartArea:{top:10,width:'80%',height:'80%'},
       lineWidth: 3,
       animation: 
@@ -113,8 +142,8 @@ function msg_history(state)
       },
       series:
       {
-        0:{pointSize:0},
-        1:{pointSize:0}
+        0:{pointSize:0, color: living_clr},
+        1:{pointSize:0, color: bedroom_clr}
       }
     };
 
@@ -122,53 +151,88 @@ function msg_history(state)
     {
       var chart = new google.visualization.LineChart(document.getElementById('graph'));
       //var chart = new google.charts.Line(document.getElementById('graph'));
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Time');
-      data.addColumn('number', 'Living Room Temperature');
-      data.addColumn('number', 'Bedroom Temperature');
       var time          = ['1','2','3','4','5','6','7','8','9'];
       var living_temp   = [10.5,17.1,20.5,50.5,58.1,30.5,15.5,11.1,50.5];
       var bedroom_temp  = [12.5,19.1,22.5,55.5,60.1,32.5,18.5,13.1,55.5];
+      data.addColumn('date', 'Time');
 
-      nr = living_temp.length;
-      data.addRows(nr);
+      
+      living_check.value = true;
+      bedroom_check.value = true;
+      set_graph();
 
-      for (jr=0;jr<nr;jr++)
-      {
-        data.setCell(jr,0,time[jr]);
-        data.setCell(jr,1,living_temp[jr]);
-        data.setCell(jr,2,bedroom_temp[jr]);
-      }
+    
     }
   
     function drawChart() 
     {
       chart.draw(data, options);
-      //document.getElementById('test').innerHTML = JSON.stringify(options) + '<br>' + col;
+      document.getElementById('opt').innerHTML = JSON.stringify(options) ;
     }
     
-    var check = document.getElementById('check');
     
-    check.onclick = function () {set_graph();};
     
-    function set_graph()
+    living_check.onchange  = function () 
     {
-	    if($('#check').is('.is-checked')) 
+      var val = living_check.value;
+      if      (val == true) {living_check.value = false;}
+      else if (val == false){living_check.value = true;}
+      set_graph();
+    };
+
+    bedroom_check.onchange  = function () 
+    {
+      var val = bedroom_check.value;
+      if      (val == true) {bedroom_check.value = false;}
+      else if (val == false){bedroom_check.value = true;}
+      set_graph();
+    };
+
+		function set_graph()
+    {
+      nr = living_temp.length;
+      data.addRows(nr);
+      
+      var ncol = data.getNumberOfColumns();
+      var ncol_old = data.getNumberOfColumns();
+      //test_id.innerHTML = 'ncol: ' + ncol + '<br> Living: ' + living_check.value + '<br> Bedroom: ' + bedroom_check.value;
+      for(jc=0;jc<ncol-1;jc++)
       {
-        var ncol = data.getNumberOfColumns()-1;
-        data.removeColumn(ncol);
+        data.removeColumn(ncol-jc-1);
       }
-      else
+      var time_col    = 0;
+      var living_col  = 1;
+      var bedroom_col = 2
+      
+      for (jr=0;jr<nr;jr++)
       {
-        var nr = bedroom_temp.length;
-        data.addColumn('number', 'Bedroom Temperature');
-        var ncol = data.getNumberOfColumns()-1;
-        for (jr=0;jr<nr;jr++)
+        data.setCell(jr,time_col    ,new Date(time[jr]));
+        if (living_check.value == true)
         {
-          data.setCell(jr,ncol,bedroom_temp[jr]);
+          var ncol = data.getNumberOfColumns();
+          if (jr == 0)
+          {
+            data.addColumn('number', 'Living Room Temperature');
+            living_col = ncol;
+            options.series[living_col-1].color = living_clr;
+          }
+          data.setCell(jr,living_col,living_temp[jr]);
+        }
+        if (bedroom_check.value == true)
+        {
+          var ncol = data.getNumberOfColumns();
+          if (jr == 0)
+          {
+            data.addColumn('number', 'Bedroom Temperature');
+            bedroom_col = ncol;
+            options.series[bedroom_col-1].color = bedroom_clr;
+          }
+          data.setCell(jr,bedroom_col,bedroom_temp[jr]);
         }
       }
-        document.getElementById('test').innerHTML = ncol;
+      
+      var ncol_new = data.getNumberOfColumns();
+      test_id.innerHTML = 'ncol: ' + ncol_old + '<br> ncol_new: '+ ncol_new + '<br> Living: ' + living_check.value + '<br> Bedroom: ' + bedroom_check.value;
       drawChart();
     };
 
@@ -182,14 +246,17 @@ function msg_history(state)
       var id = selection[0];
       if (selection.length > 1){var col = selection[1];}
       
+      var ncol = data.getNumberOfColumns()-1;
       if (id == 'legendentry') 
       {
-        options.series = JSON.parse('{"'+col+'":{"pointSize":4}}');
+        for (jc=0;jc<ncol;jc++)
+        {options.series[jc].pointSize = 0;}
+        options.series[col].pointSize = 4;
       }
       else  
       {
-        options.series = {0:{pointSize:0},1:{pointSize:0}}; 
-        drawChart();
+        for (jc=0;jc<ncol;jc++)
+        {options.series[jc].pointSize = 0;}
       }
       drawChart();
     
@@ -198,7 +265,6 @@ function msg_history(state)
     google.visualization.events.addListener(chart, 'click', myClickHandler);
     
     
-    drawChart();
   
  	  $(window).resize(function()
     {
