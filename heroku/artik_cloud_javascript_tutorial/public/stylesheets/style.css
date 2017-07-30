@@ -1,0 +1,61 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+div.app-description {
+
+	background-color: #ddd;
+	color: #333;
+	padding: 2em 2em;
+
+}
+
+div.sample {
+	background: #eee;
+	padding: 1em 1em;
+	margin: 2em 0em;
+}
+
+
+div.status {
+	padding: 2em 0em 0em 0em;
+	font-weight: 800;
+	font-size: 1.2em;
+}
+
+
+div.left {
+	float: left;
+	width: 49%;
+}
+div.right {
+	float: right;
+	width: 49%;
+
+}
+
+p.api {
+	font: 0.8em Courier, serif;
+}
+
+p.info {
+	font-size: 0.8em;
+}
+
+
+pre {
+  background-color: #dedede;
+  padding: 2em 2em;
+  font-size: 0.8em;
+}
+
+pre.error {
+	color: #c50909;
+	overflow: scroll;
+}

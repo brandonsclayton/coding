@@ -1,0 +1,7 @@
+{
+	"client_id": "your client id",
+    "client_secret": "your client secret",
+    "redirect_uri": "http://localhost:3000/callback/artikcloud",
+    "device_type_id": "dt013005c9302a428990073c9d6359b354"
+}
+
