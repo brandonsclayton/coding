@@ -88,12 +88,23 @@ while(True):
     nmsg = len(msg)           # Get length of message
     sensor_id = [];           # Allocate for sensor id
     temp      = [];           # Allocate for temp 
+    
     for js in range(0,nmsg,ns):
       sensor_id.append(msg[js])
       temp.append(msg[js+1])
-  
-    print ('Sensor ID: %s '%sensor_id)
-    print ('Temperature: %s '%temp)
+    
+    nt = len(temp)
+    avg_temp = 0
+    for jt in range(nt):
+      avg_temp = float(temp[jt]) + avg_temp
+
+    avg_temp = avg_temp/float(nt)   
+    avg_temp = '%.2f'%avg_temp
+    par['Average_Temperature'] = avg_temp
+
+    print 'Sensor ID: %s '%sensor_id
+    print 'Temperature: %s '%temp
+    print 'Average Temperature: %s'%avg_temp
     
     jj=0
     for js in range(ns):
