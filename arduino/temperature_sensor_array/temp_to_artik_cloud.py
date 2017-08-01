@@ -34,14 +34,14 @@ os.system('clear')
 ###########################################################################
 #
 #................... Variables ............................................
-arduino='/dev/ttyACM1'                              # Arduino device for serial communication
+arduino='/dev/ttyACM0'                              # Arduino device for serial communication
 
 device_id = '1497d25089db4a8d84997fd5b2a3d65f'      # Arduino device ID for Artik cloud
 device_token = '17d85311bc7f46519a75a5138c46f221'   # Arduino device token for Artik cloud
 
 ac_msg = {}                                         # Dictionary for Artik Cloud messages
    
-wait = 40                                           # Time to wait in seconds
+wait = 30                                           # Time to wait in seconds
 
 room_id = [ "temp_hub",      "Living_Room_Temperature",      
             "temp_sensor00", "Bedroom_Temperature"]
@@ -100,7 +100,7 @@ while(True):
 
     avg_temp = avg_temp/float(nt)   
     avg_temp = '%.2f'%avg_temp
-    par['Average_Temperature'] = avg_temp
+    ac_msg['Average_Temperature'] = avg_temp
 
     print 'Sensor ID: %s '%sensor_id
     print 'Temperature: %s '%temp
