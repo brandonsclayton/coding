@@ -1,0 +1,15 @@
+
+
+
+
+{
+  "type" : "Feature",
+  "geometry" : {
+    "type" : "Point",
+    "coordinates" : [-105.230, 39.754]
+  },
+  "properties" : {
+    "City"  : "Golden",
+    "State" : "Colorado"
+  }
+}
