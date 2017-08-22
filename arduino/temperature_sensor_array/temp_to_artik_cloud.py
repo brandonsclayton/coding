@@ -34,14 +34,14 @@ os.system('clear')
 ###########################################################################
 #
 #................... Variables ............................................
-arduino='/dev/ttyACM1'                              # Arduino device for serial communication
+arduino='/dev/ttyACM0'                              # Arduino device for serial communication
 
 device_id = '1497d25089db4a8d84997fd5b2a3d65f'      # Arduino device ID for Artik cloud
 device_token = '17d85311bc7f46519a75a5138c46f221'   # Arduino device token for Artik cloud
 
 ac_msg = {}                                         # Dictionary for Artik Cloud messages
    
-wait = 40                                           # Time to wait in seconds
+wait = 30                                           # Time to wait in seconds
 
 room_id = [ "temp_hub",      "Living_Room_Temperature",      
             "temp_sensor00", "Bedroom_Temperature"]
@@ -88,12 +88,23 @@ while(True):
     nmsg = len(msg)           # Get length of message
     sensor_id = [];           # Allocate for sensor id
     temp      = [];           # Allocate for temp 
+    
     for js in range(0,nmsg,ns):
       sensor_id.append(msg[js])
       temp.append(msg[js+1])
-  
-    print ('Sensor ID: %s '%sensor_id)
-    print ('Temperature: %s '%temp)
+    
+    nt = len(temp)
+    avg_temp = 0
+    for jt in range(nt):
+      avg_temp = float(temp[jt]) + avg_temp
+
+    avg_temp = avg_temp/float(nt)   
+    avg_temp = '%.2f'%avg_temp
+    ac_msg['Average_Temperature'] = avg_temp
+
+    print 'Sensor ID: %s '%sensor_id
+    print 'Temperature: %s '%temp
+    print 'Average Temperature: %s'%avg_temp
     
     jj=0
     for js in range(ns):

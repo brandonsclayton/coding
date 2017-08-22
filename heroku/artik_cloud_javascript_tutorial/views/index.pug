@@ -1,0 +1,69 @@
+extends layout
+
+block content
+
+	- var clientId= config.client_id
+	- var redirectUri = config.redirect_uri
+	- var loginUrl = 'https://accounts.artik.cloud/signin?' + 'client_id=' + clientId + '&response_type=code' + '&redirect_uri=' + redirectUri + '&state=' + oauthState
+
+	h1 Sample Webapp using ARTIK Cloud SDK
+
+	div.app-description 
+
+		h3 Sample Application Description:
+		ul
+			ol 1. Login
+			ol 2. Acceptance Permission (Shown 1st Time Login only)
+			ol 3. Create Device
+			ol 4. Send Message to Device
+			ol 5. Get Message to Device
+
+		p Each action below will call your server and server will make API call using the SDK
+
+	h2(id="welcome-name") Hello
+	p.info(id="welcome-info")
+	a(class='button' href= loginUrl) Login to ARTIK Cloud
+	p or login again to change to different account
+
+	hr
+
+	div.container
+		div.left
+			div.sample
+				h3 Create Device
+				p.info Device is added into your account at https://my.artik.cloud.   
+				p.api 
+					a(href="https://developer.artik.cloud/documentation/api-reference/rest-api.html#devices") Devices API -> Add Device
+				button(id="create-device") Create Device
+				div.status(id="status-create")
+				pre.response(id="response-create")
+					div {api response}
+
+			div.sample
+				h3 Send Message to Device 
+				p.api
+					a(href="https://developer.artik.cloud/documentation/api-reference/rest-api.html#messages") Messages API -> Send Message
+				button(id="send-message") Send Message
+				div.status(id="status-send")
+				pre.response(id="response-send")
+					div {api response}
+
+			div.sample
+				h3 Get Last Message sent to Device
+				p.api 
+					a(href="https://developer.artik.cloud/documentation/api-reference/rest-api.html#messages") Messages API -> Get Last Normalized Message
+				button(id="get-message") Get Message
+				div.status(id="status-send")
+				pre.response(id="response-get")
+					div {api response}
+		div.right
+			div.log
+				h3 Logs
+				p access_token for this application is shown below after signing in:
+				p= token.access_token
+				pre.log(id="log")
+
+	
+
+	script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+	script(src='/javascripts/app.js')

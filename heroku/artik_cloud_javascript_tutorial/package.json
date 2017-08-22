@@ -1,0 +1,22 @@
+{
+  "name": "artikcloud-sampleapp-nodejs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "artikcloud-js": "~2.0.8",
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "cookie-session": "^2.0.0-beta.2",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "express-session": "^1.15.3",
+    "https": "^1.0.0",
+    "morgan": "~1.8.1",
+    "pug": "~2.0.0-beta11",
+    "querystring": "^0.2.0",
+    "serve-favicon": "~2.4.2"
+  }
+}
