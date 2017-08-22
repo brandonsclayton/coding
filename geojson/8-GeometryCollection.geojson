@@ -1,0 +1,19 @@
+
+
+
+{
+  "type" : "GeometryCollection",
+  "geometries" : [  
+    {
+      "type" : "Point",
+      "coordinates" : [-105.4352,37.5973]
+    },{
+      "type" : "LineString",
+      "coordinates" : [
+				[-105.230484,39.754185],
+				[-105.230510,39.760000]
+			]
+		}		
+	]
+}
+	
