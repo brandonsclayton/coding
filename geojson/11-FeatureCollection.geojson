@@ -1,0 +1,32 @@
+
+
+
+{
+  "type"     : "FeatureCollection",
+  "features" : [
+    {
+      "type"     : "Feature",
+      "geometry" : {
+        "type"   : "Point",
+        "coordinates" : [-105.221, 39.7555]
+      },
+      "properties" : {
+        "City" : "Golden"
+      }
+    },
+    { 
+      "type" : "Feature",
+      "geometry" : {
+        "type" : "LineString",
+        "coordinates" : [
+          [-105.230484,39.754185],
+          [-105.230510,39.760000]
+        ]
+      },
+      "properties" : {
+        "Name" : "Golden Line"
+      }
+    }
+  ]
+}
+    
