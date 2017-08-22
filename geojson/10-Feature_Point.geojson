@@ -6,7 +6,7 @@
   "type" : "Feature",
   "geometry" : {
     "type" : "Point",
-    "coordinates" : [-105.230, 39.754]
+    "coordinates" : [-105.220, 39.756]
   },
   "properties" : {
     "City"  : "Golden",
