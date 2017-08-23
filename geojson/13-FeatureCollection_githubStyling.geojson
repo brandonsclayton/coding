@@ -11,12 +11,12 @@
       },
       "properties" : {
         "Title"         : "Point in Golden",
-        "Marker Size"   : "Small",
+        "Marker Size"   : "Large",
         "Marker Color"  : "Lime (#00FF00)",
-        "Maker Symbol"  : "veterinary-15",
-        "marker-size"   : "small",
+        "Maker Symbol"  : "veterinary",
+        "marker-size"   : "large",
         "marker-color"  : "#00FF00",
-        "marker-symbol" : "zoo-15"
+        "marker-symbol" : "veterinary"
       }
     }
   ]
