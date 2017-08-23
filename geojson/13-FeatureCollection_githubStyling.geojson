@@ -33,10 +33,7 @@
         "Title"         : "Line in Golden",
         "Stroke"        : "Red (#FF0000)",
         "Stoke Opacity" : 0.5,
-        "Stroke Width"  : 2,
-        "stroke"        : "#FF0000",
-        "stroke-opacity": 0.5,
-        "stroke-width"  : 2
+        "Stroke Width"  : 2
       }
     }
   ]
