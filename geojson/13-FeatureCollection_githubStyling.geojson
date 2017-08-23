@@ -13,10 +13,30 @@
         "Title"         : "Point in Golden",
         "Marker Size"   : "Large",
         "Marker Color"  : "Lime (#00FF00)",
-        "Maker Symbol"  : "veterinary",
+        "Maker Symbol"  : "Zoo",
         "marker-size"   : "large",
         "marker-color"  : "#00FF00",
-        "marker-symbol" : "airport"
+        "marker-symbol" : "zoo"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {
+        "type" : "LineString",
+        "coordinates" : [
+          [-105.2215, 39.7552],
+          [-105.2251, 39.7565],
+          [-105.2231, 39.7552]
+        ]
+      },
+      "properties" : {
+        "Title"         : "Line in Golden",
+        "Stroke"        : "Red (#FF0000)",
+        "Stoke Opacity" : 0.5,
+        "Stroke Width"  : 2,
+        "stroke"        : "#FF0000",
+        "stroke-opacity": 0.5,
+        "stroke-width"  : 2
       }
     }
   ]
