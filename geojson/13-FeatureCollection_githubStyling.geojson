@@ -25,11 +25,19 @@
         "type" : "LineString",
         "coordinates" : [
           [-105.2215, 39.7552],
-          [-105.2231, 39.7552]
+          [-105.2251, 39.7565],
+          [-105.2231, 39.7552],
+          [-105.2265, 39.7601]
         ]
       },
       "properties" : {
-        "Title"         : "Line in Golden"
+        "Title"         : "Line in Golden",
+        "Stroke"        : "Red (#FF0000)",
+        "Stoke Opacity" : 0.5,
+        "Stroke Width"  : 2,
+        "stroke"        : "#FF0000",
+        "stroke-opacity": 0.5,
+        "stroke-width"  : 2
       }
     }
   ]
