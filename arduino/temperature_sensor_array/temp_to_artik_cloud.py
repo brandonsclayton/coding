@@ -13,8 +13,8 @@
 ###########################################################################
 #
 #........................ Import ..........................................
-import artikcloud
-from artikcloud.rest import ApiException
+
+import Adafruit_IO as adaio
 import sys, getopt
 import random, json
 from pprint import pprint
@@ -36,35 +36,23 @@ os.system('clear')
 #................... Variables ............................................
 arduino='/dev/ttyACM0'                              # Arduino device for serial communication
 
-device_id = '1497d25089db4a8d84997fd5b2a3d65f'      # Arduino device ID for Artik cloud
-device_token = '17d85311bc7f46519a75a5138c46f221'   # Arduino device token for Artik cloud
-
 ac_msg = {}                                         # Dictionary for Artik Cloud messages
    
 wait = 30                                           # Time to wait in seconds
 
-room_id = [ "temp_hub",      "Living_Room_Temperature",      
-            "temp_sensor00", "Bedroom_Temperature"]
+room_id = [ "temp_hub",      "living-room-temperature",      
+            "temp_sensor00", "bedroom-temperature"]
 
 nroom = len(room_id)
 ns=2
 
+
+aio = "3e6def1ef84a4ab2a46968bbf09c150a"
+ada = adaio.Client(aio)
 #----------------- End Variables ------------------------------------------
 #
 ###########################################################################
 
-
-
-###########################################################################
-#
-#................... Setup Artik Cloud Communication ......................
-artikcloud.configuration = artikcloud.Configuration()       # Configure Artik Cloud
-artikcloud.configuration.access_token = device_token        # Set device token
-device_sdid = device_id                                     # Set device id
-api_instance = artikcloud.MessagesApi()                     # Get messaging API
-#------------- End Artik Cloud Communication Setup ------------------------
-#
-###########################################################################
 
 
 print ('\n\n --------- Connecting -------------- \n\n\n')
@@ -100,7 +88,7 @@ while(True):
 
     avg_temp = avg_temp/float(nt)   
     avg_temp = '%.2f'%avg_temp
-    ac_msg['Average_Temperature'] = avg_temp
+    ac_msg['average-temperature'] = avg_temp
 
     print 'Sensor ID: %s '%sensor_id
     print 'Temperature: %s '%temp
@@ -113,9 +101,8 @@ while(True):
           ac_msg[room_id[jr+1]] = temp[js]
           jj=jj+1
 
-    ts = None                                             # Custom time stamp
-    data = artikcloud.Message(ac_msg, device_sdid, ts)    # Construct a Message object
-
+    for msg in ac_msg:
+      print msg
     print ("\n\nMessage to Send:")
     print (data)
 
@@ -125,16 +112,6 @@ while(True):
     #--------------- End Make Message to Send --------------------------------
 
     #....................... Send Message to Artik Cloud ......................
-    try: 
-      # Debug Print oauth settings
-      pprint(artikcloud.configuration.auth_settings())
-
-      # Send Message
-      api_response = api_instance.send_message(data)
-      pprint(api_response)
-    except ApiException as e:
-      pprint("Exception when calling MessagesApi->send_message: %s\n" % e)
-    
     
     print ('\n\n Waiting %d seconds'%wait)
     print ('---------------------------------------------------\n\n\n')
