@@ -1,9 +1,6 @@
 #!/bin/bash
 
-log="upload.log"
-jr=-1
 while true;do
-    ((jr++))
-    python temp_to_artik_cloud.py 
+    python temp_to_artik_cloud.py > log 
     wait
 done
